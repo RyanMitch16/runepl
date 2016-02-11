@@ -1,0 +1,13 @@
+
+var createThing = func(objName, y):(
+
+    var name = objName
+
+    var myFunc = (func(x): return y + x)
+
+    return this
+)
+
+
+var obj = createThing("Ryan", 12)
+return obj.myFunc(3)
