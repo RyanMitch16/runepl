@@ -7,12 +7,27 @@ import compiler.lexer.LexemeType;
 import compiler.parser.Node;
 import compiler.parser.node.AnonFunctionNode;
 
+/**
+ * AnonFunctionDeclaration : FUNC PAREN_LEFT OptIdentifierList PAREN_RIGHT COLON FunctionStatement
+ *                         | FUNC PAREN_LEFT OptIdentifierList PAREN_RIGHT COLON PAREN_LEFT NEW_LINE TAB_INC FunctionStatementList NEW_LINE TAB_DEC PAREN_RIGHT
+ */
 public class AnonFunctionDeclaration {
 
+    /**
+     * Check if the grammar is pending.
+     * @param parser the parser supplying the lexemes from the lexer
+     * @return whether the grammar is pending
+     */
     public static boolean pending(Parser parser){
         return parser.check(LexemeType.FUNC);
     }
 
+    /**
+     * Attempt to match the grammar to the lexeme stream.
+     * @param parser the parser supplying the lexemes from the lexer
+     * @return the node matched from the grammar
+     * @throws BuildException
+     */
     public static Node match(Parser parser) throws BuildException {
 
         Lexeme func = parser.match(LexemeType.FUNC);
@@ -37,7 +52,7 @@ public class AnonFunctionDeclaration {
                     return AnonFunctionNode.createAnonFunction(func, parameters, body);
                 }
             }
-            throw new BuildException(tab.beginLine, tab.beginPos, "Expected a statement");
+            throw new BuildException(tab, "Expected a statement");
         }
 
         if (Statement.pending(parser)) {
@@ -49,6 +64,6 @@ public class AnonFunctionDeclaration {
             }
         }
 
-        throw new BuildException(func.beginLine, func.beginPos, "Expected an anonymous function declaration");
+        throw new BuildException(func, "Expected an anonymous function declaration");
     }
 }

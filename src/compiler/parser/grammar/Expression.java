@@ -6,12 +6,27 @@ import compiler.lexer.Lexeme;
 import compiler.lexer.LexemeType;
 import compiler.parser.Node;
 
+/**
+ * Expression : AnonFunctionDeclaration
+ *            | Expression5
+ */
 public class Expression {
 
+    /**
+     * Check if the grammar is pending.
+     * @param parser the parser supplying the lexemes from the lexer
+     * @return whether the grammar is pending
+     */
     public static boolean pending(Parser parser){
         return AnonFunctionDeclaration.pending(parser) || Expression5.pending(parser);
     }
 
+    /**
+     * Attempt to match the grammar to the lexeme stream.
+     * @param parser the parser supplying the lexemes from the lexer
+     * @return the node matched from the grammar
+     * @throws BuildException
+     */
     public static Node match(Parser parser) throws BuildException {
 
         if (AnonFunctionDeclaration.pending(parser)) {
@@ -21,9 +36,6 @@ public class Expression {
         if  (Expression5.pending(parser)) {
             return Expression5.match(parser);
         }
-
-        Lexeme lexeme = parser.getCurrentLexeme();
-        throw new BuildException(lexeme.beginPos, lexeme.beginLine, "Expected an expression");
-
+        throw new BuildException(parser.getCurrentLexeme(), "Expected an expression");
     }
 }

@@ -85,14 +85,17 @@ public class Lexer {
     //Check if the end of the file has been reached
     private boolean eof;
 
+    //Whether a line continue symbol was just read indicating the new line that should follow is to be skipped
     private boolean lineContinue;
 
     //The last character read from the file
     private Character lastCharRead;
 
+    //Set when a period is read after an integer but what followed was not an integer
     private boolean returnDot;
 
-    private boolean multiLineCommentSkipNewLine;
+    //Set when the last line was a new line to indicate the next should be ignored
+    private boolean lastWasNewLine;
 
     /**
      * Initiates the lexer to read in the specified file.
@@ -113,14 +116,10 @@ public class Lexer {
 
         //Set that the end of the file has not been reached
         eof = false;
-
         lineContinue = false;
-
         lastCharRead = null;
-
         returnDot = false;
-
-        multiLineCommentSkipNewLine = false;
+        lastWasNewLine = true;
     }
 
     /**
@@ -197,8 +196,8 @@ public class Lexer {
     }
 
     /**
-     *
-     * @return
+     * Get the last character read in from the file.
+     * @return the last character read
      * @throws IOException
      */
     private char getLastCharRead() throws IOException {
@@ -218,10 +217,9 @@ public class Lexer {
         return eof;
     }
 
-
     /**
-     *
-     * @return
+     * Lex a symbol from the file at the current position.
+     * @return the lexeme that represents the symbol
      * @throws IOException
      * @throws BuildException
      */
@@ -253,15 +251,10 @@ public class Lexer {
     }
 
     /**
-     *
-     * @return
+     * Lex a single line comment from the file at the current position.
      * @throws IOException
      */
     public void lexSingleLineComment() throws IOException{
-        //Save the location of the comment
-        int bl = currentLine;
-        int bp = currentPosition;
-
         //Read the characters until the end of the file or the end of the line
         char c = getLastCharRead();
         while (!reachedEOF() && c != '\n') {
@@ -270,8 +263,7 @@ public class Lexer {
     }
 
     /**
-     *
-     * @return
+     * Lex a multi line comment from the file at the current position.
      * @throws IOException
      * @throws BuildException
      */
@@ -299,8 +291,8 @@ public class Lexer {
     }
 
     /**
-     *
-     * @return
+     * Lex an identifier from the file at the current position.
+     * @return  the lexeme that represents the identifier
      * @throws IOException
      * @throws BuildException
      */
@@ -455,8 +447,8 @@ public class Lexer {
     }
 
     /**
-     *
-     * @return
+     * Lex a number from the file at the current position.
+     * @return the lexeme that represents the number
      * @throws IOException
      * @throws BuildException
      */
@@ -524,8 +516,8 @@ public class Lexer {
     }*/
 
     /**
-     *
-     * @return
+     * Lex a string from the file at the current position.
+     * @return the lexeme that represents the string
      * @throws IOException
      * @throws BuildException
      */
@@ -557,12 +549,13 @@ public class Lexer {
     }
 
     /**
-     *
-     * @return
+     * Count the difference of indentions between the current line and the previous.
+     * @return the integer difference between this line and the last
      * @throws IOException
      * @throws BuildException
      */
     public int countTabs() throws IOException, BuildException {
+
         char c = getLastCharRead();
         if (useSpaces) {
 
@@ -615,10 +608,10 @@ public class Lexer {
     }
 
     /**
-     *
-     * @return
+     * Lex the next lexeme from the file.
+     * @return the next lexeme from the file or EOF
      */
-    public Lexeme lex() {
+    public Lexeme lex() throws BuildException{
 
         try {
             //Read in characters until the end of the file has been reached
@@ -628,6 +621,7 @@ public class Lexer {
                 //Return a dot (period, full stop) if the integer return previously did not have a decimal place when checked
                 if (returnDot) {
                     returnDot = false;
+                    lastWasNewLine = false;
                     return new Lexeme(LexemeType.DOT, currentLine, currentPosition-1);
                 }
 
@@ -641,12 +635,14 @@ public class Lexer {
                 //Return tab increase lexemes if the tab count increased this line
                 if (lineTabsToBeReturned > 0) {
                     lineTabsToBeReturned -= 1;
+                    lastWasNewLine = false;
                     return new Lexeme(LexemeType.TAB_INC, currentLine, 0);
                 }
 
                 //Return tab decrease lexemes if the tab count decreased this line
                 if (lineTabsToBeReturned < 0) {
                     lineTabsToBeReturned += 1;
+                    lastWasNewLine = false;
                     return new Lexeme(LexemeType.TAB_DEC, currentLine, 0);
                 }
 
@@ -658,11 +654,10 @@ public class Lexer {
                     c = readChar();
                 }
 
-                if (multiLineCommentSkipNewLine && c == '\n') {
+                if (lastWasNewLine && c == '\n') {
                     c = readChar();
                     continue;
                 }
-                multiLineCommentSkipNewLine = false;
 
                 //Catch if after the line continuation symbol, the new line that should follow is missing
                 if (lineContinue && c == '\n') {
@@ -671,7 +666,7 @@ public class Lexer {
 
                 //Lex new line characters if there is not a line continuation symbol before them
                 if (c == '\n') {
-                    multiLineCommentSkipNewLine = true;
+                    lastWasNewLine = true;
                     if (!lineContinue) {
                         int bl = currentLine;
                         int bp = currentPosition;
@@ -684,6 +679,7 @@ public class Lexer {
 
                 //Attempt to lex a string
                 else if (c == '"') {
+                    lastWasNewLine = false;
                     return lexString();
                 }
 
@@ -691,25 +687,34 @@ public class Lexer {
                 else if (isSymbol(c)) {
                     Lexeme lexeme = lexSymbol();
                     if (lexeme.type == LexemeType.COMMENT_MULTI) {
-                        multiLineCommentSkipNewLine = true;
                         lexMultiLineComment();
+                        /*if (!lastWasNewLine) {
+                            lastWasNewLine = true;
+                            return new Lexeme(LexemeType.LINE_NEW, currentLine, currentPosition);
+                        }*/
                     } else if (lexeme.type == LexemeType.COMMENT_SINGLE) {
-                        multiLineCommentSkipNewLine = true;
                         lexSingleLineComment();
+                        /*if (!lastWasNewLine) {
+                            lastWasNewLine = true;
+                            return new Lexeme(LexemeType.LINE_NEW, currentLine, currentPosition);
+                        }*/
                     } else if (lexeme.type == LexemeType.LINE_CONT) {
                         lineContinue = true;
                     } else {
+                        lastWasNewLine = false;
                         return lexeme;
                     }
                 }
 
                 //Attempt to lex an identifier
                 else if (isLetter(c)) {
+                    lastWasNewLine = false;
                     return lexIdentifier();
                 }
 
                 //Attempt to lex a number
                 else if (isNumber(c)) {
+                    lastWasNewLine = false;
                     return lexNumber();
                 }
 
@@ -720,8 +725,6 @@ public class Lexer {
             }
         } catch (IOException e) {
             System.out.println("IOE");
-        } catch (BuildException e) {
-            System.out.println(e.toString());
         }
 
         return new Lexeme(LexemeType.EOF, currentLine, currentPosition);

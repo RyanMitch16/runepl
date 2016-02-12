@@ -10,12 +10,30 @@ import compiler.parser.node.AccessMemberNode;
 import compiler.parser.node.FunctionCallNode;
 import compiler.parser.node.IdentifierNode;
 
+/**
+ * Expression2 : Expression2 DOT IDENTIFIER
+ *             | Expression2 BRACKET_LEFT Expression BRACKET_BRACKET
+ *             | Expression2 PAREN_LEFT OptExpressionList PAREN_RIGHT
+ *             | Expression1
+ */
 public class Expression2 {
 
+    /**
+     * Check if the grammar is pending.
+     * @param parser the parser supplying the lexemes from the lexer
+     * @return whether the grammar is pending
+     */
     public static boolean pending(Parser parser){
         return Expression1.pending(parser);
     }
 
+
+    /**
+     * Attempt to match the grammar to the lexeme stream.
+     * @param parser the parser supplying the lexemes from the lexer
+     * @return the node matched from the grammar
+     * @throws BuildException
+     */
     public static Node match(Parser parser) throws BuildException {
 
         if (Expression1.pending(parser)) {
@@ -28,15 +46,15 @@ public class Expression2 {
                     if (parser.check(LexemeType.IDENTIFIER)) {
                         head = AccessMemberNode.createMemberAccessor(op, head, IdentifierNode.createIdentifier(parser.advance()));
                     } else {
-                        throw new BuildException(op.beginLine, op.beginPos, "Missing identifier to be accessed");
+                        throw new BuildException(op, "Missing identifier to be accessed");
                     }
                 } else if (op.type == LexemeType.BRACKET_LEFT) {
                     if (Expression5.pending(parser)) {
-                        Node expression = Expression5.match(parser);
+                        Node expression = Expression.match(parser);
                         parser.match(LexemeType.BRACKET_RIGHT);
                         head = AccessElementNode.createElementAccessor(op, head, expression);
                     } else {
-                        throw new BuildException(op.beginLine, op.beginPos, "Missing expression in element accessor");
+                        throw new BuildException(op, "Missing expression in element accessor");
                     }
                 } else {
                     Node expressionList = OptExpressionList.match(parser);
@@ -52,7 +70,6 @@ public class Expression2 {
             return head;
         }
 
-        Lexeme lexeme = parser.getCurrentLexeme();
-        throw new BuildException(lexeme.beginPos, lexeme.beginLine, "Expected an expression");
+        throw new BuildException(parser.getCurrentLexeme(), "Expected an expression");
     }
 }

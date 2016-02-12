@@ -9,5 +9,14 @@ var createThing = func(objName, y):(
 )
 
 
+var multiReturn = func(x, y):(
+
+    return x + 1, y - 1
+)
+
 var obj = createThing("Ryan", 12)
-return obj.myFunc(3)
+
+//return obj.name + obj.myFunc(3)
+
+return 1, 2, 3
+

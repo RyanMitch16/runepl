@@ -7,14 +7,29 @@ import compiler.lexer.LexemeType;
 import compiler.parser.Node;
 import compiler.parser.node.OperatorBinaryNode;
 
+/**
+ * Expression5 : Expression5 PLUS Expression4
+ *             | Expression5 MINUS Expression4
+ *             | Expression4
+ */
 public class Expression5 {
 
+    /**
+     * Check if the grammar is pending.
+     * @param parser the parser supplying the lexemes from the lexer
+     * @return whether the grammar is pending
+     */
     public static boolean pending(Parser parser){
         return Expression4.pending(parser);
     }
 
+    /**
+     * Attempt to match the grammar to the lexeme stream.
+     * @param parser the parser supplying the lexemes from the lexer
+     * @return the node matched from the grammar
+     * @throws BuildException
+     */
     public static Node match(Parser parser) throws BuildException {
-
 
         if (Expression4.pending(parser)) {
 
@@ -33,16 +48,14 @@ public class Expression5 {
                         head = OperatorBinaryNode.createOperationSubtraction(op, head, right);
                     }
                 } else {
-                    Lexeme lexeme = parser.getCurrentLexeme();
-                    throw new BuildException(lexeme.beginPos, lexeme.beginLine, "Expected an expression");
+                    throw new BuildException(op, "Expected an expression");
                 }
             }
 
             return head;
         }
 
-        Lexeme lexeme = parser.getCurrentLexeme();
-        throw new BuildException(lexeme.beginPos, lexeme.beginLine, "Expected an expression");
+        throw new BuildException(parser.getCurrentLexeme(), "Expected an expression");
     }
 
 }

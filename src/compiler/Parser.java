@@ -9,6 +9,7 @@ import compiler.parser.grammar.StatementList;
 import compiler.parser.grammar.VariableDeclaration;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Parser {
 
@@ -35,7 +36,7 @@ public class Parser {
      *
      * @return
      */
-    public Lexeme advance() {
+    public Lexeme advance() throws BuildException {
         Lexeme old = currentLexeme;
         currentLexeme = lexer.lex();
         return old;
