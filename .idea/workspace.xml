@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7835727c-8f61-4df8-92de-c1efc59e3b14" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/interpreter/ReturnTypeList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/Interpreter.java" afterPath="$PROJECT_DIR$/src/compiler/Interpreter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/RunTimeException.java" afterPath="$PROJECT_DIR$/src/compiler/RunTimeException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/Environment.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/Environment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/ReturnType.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/ReturnType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeDouble.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeDouble.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeFunction.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeFunction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeInteger.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeInteger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeObject.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeString.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeString.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/Node.java" afterPath="$PROJECT_DIR$/src/compiler/parser/Node.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/NodeList.java" afterPath="$PROJECT_DIR$/src/compiler/parser/NodeList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/NodeType.java" afterPath="$PROJECT_DIR$/src/compiler/parser/NodeType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/AccessElementNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/AccessElementNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/AccessMemberNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/AccessMemberNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/AnonFunctionNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/AnonFunctionNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/ExpressionListNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/ExpressionListNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/FunctionCallNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/FunctionCallNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/IdentifierListNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/IdentifierListNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/IdentifierNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/IdentifierNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/LiteralNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/LiteralNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/OperatorBinaryNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/OperatorBinaryNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/OperatorUnaryNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/OperatorUnaryNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/ReturnNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/ReturnNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/StatementListNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/StatementListNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/VariableDeclarationNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/VariableDeclarationNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.txt" afterPath="$PROJECT_DIR$/test.txt" />
     </list>
     <ignored path="rune.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -735,7 +708,13 @@
       <option name="project" value="LOCAL" />
       <updated>1455320589536</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added RunTimeExceptions and Returntypes">
+      <created>1455440925271</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1455440925271</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -803,7 +782,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated lexer and grammars with comments and code cleaning.&#10;Added ReturnTypes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated lexer and grammars with comments and code cleaning.&#10;Added ReturnTypes" />
+    <MESSAGE value="Added RunTimeExceptions and Returntypes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added RunTimeExceptions and Returntypes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
