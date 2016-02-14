@@ -1,6 +1,8 @@
 package compiler.parser.node;
 
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeType;
@@ -26,18 +28,11 @@ public class ReturnNode extends Node {
         return new ReturnNode(NodeType.ReturnStatement, ret, expressions);
     }
 
-    public Object eval(Environment env) {
+    public ReturnTypeList eval(Environment env) throws RunTimeException{
         if (children.length == 0) {
-            return new LinkedList();
+            return new ReturnTypeList();
         } else {
-
-            Object val = children[0].eval(env);
-            if (val instanceof AnonFunctionNode && ((AnonFunctionNode) val).env == null) {
-                ((AnonFunctionNode) val).env = env;
-                System.out.println("env");
-            }
-
-            return val;
+            return children[0].eval(env);
         }
     }
 }

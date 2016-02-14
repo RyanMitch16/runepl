@@ -5,26 +5,39 @@ import java.util.ListIterator;
 
 public class Environment {
 
-    private LinkedList<String> vars;
-    private LinkedList<Object> vals;
+    public LinkedList<String> variables;
+    public LinkedList<ReturnType> values;
     
     public Environment nextEnvironment;
 
     public Environment(){
-        vars = new LinkedList<>();
-        vals = new LinkedList<>();
-        insert("this",this);            //TODO: MAKE A RESERVED LITERAL IN LEXER -- TEMPORARY SOLUTION
+        variables = new LinkedList<>();
+        values = new LinkedList<>();
     }
 
-    /*public Environment(LinkedList<String> vars){
-        this.vars = vars;
-        vals = new LinkedList<>();
+    /*public Environment(LinkedList<String> variables){
+        this.variables = variables;
+        values = new LinkedList<>();
     }*/
 
-    public Environment(LinkedList<String> vars, LinkedList<Object> vals){
-        this.vars = vars;
-        this.vals = vals;
-        insert("this",this);            //TODO: MAKE A RESERVED LITERAL IN LEXER -- TEMPORARY SOLUTION
+    public Environment(LinkedList<String> variables, ReturnTypeList values){
+
+        this.variables = new LinkedList<>();
+        this.values = new LinkedList<>();
+
+        ListIterator<String> identifierIterator = variables.listIterator();
+        ListIterator<ReturnType> expressionIterator = values.listIterator();
+
+        while (identifierIterator.hasNext()) {
+            String identifier = identifierIterator.next();
+
+            if (expressionIterator.hasNext()) {
+
+                insert(identifier, expressionIterator.next());
+            } else {
+                insert(identifier, null);
+            }
+        }
     }
 
     public Environment extend(){
@@ -33,28 +46,44 @@ public class Environment {
         return e;
     }
 
-    public Environment extend(LinkedList<String> vars, LinkedList<Object> vals){
-        Environment e = new Environment(vars, vals);
+    public Environment extend(LinkedList<String> variables, ReturnTypeList values){
+        Environment e = new Environment(variables, values);
         e.nextEnvironment = this;
         return e;
     }
 
-    public Object insert(String variable, Object value){
-        vars.push(variable);
-        vals.push(value);
+    public ReturnType insert(String variable, ReturnType value){
+        variables.push(variable);
+        values.push(value);
         return value;
     }
 
-    public Object lookUp(String variable){
+    public void insert(LinkedList<String> variables, ReturnTypeList values){
+        ListIterator<String> identifierIterator = variables.listIterator();
+        ListIterator<ReturnType> expressionIterator = values.listIterator();
+
+        while (identifierIterator.hasNext()) {
+            String identifier = identifierIterator.next();
+
+            if (expressionIterator.hasNext()) {
+
+                insert(identifier, expressionIterator.next());
+            } else {
+                insert(identifier, null);
+            }
+        }
+    }
+
+    public ReturnType lookUp(String variable){
 
         Environment env = this;
         while (env != null) {
-            ListIterator<String> varIt = env.vars.listIterator();
-            ListIterator<Object> valIt = env.vals.listIterator();
+            ListIterator<String> varIt = env.variables.listIterator();
+            ListIterator<ReturnType> valIt = env.values.listIterator();
 
             while (varIt.hasNext()) {
                 String var = varIt.next();
-                Object val = valIt.next();
+                ReturnType val = valIt.next();
                 if (var.equals(variable)) {
                     return val;
                 }
@@ -66,12 +95,12 @@ public class Environment {
         return null;
     }
 
-    public void update(String variable, Object value){
+    public void update(String variable, ReturnType value){
 
         Environment env = this;
         while (env != null) {
-            ListIterator<String> varIt = env.vars.listIterator();
-            ListIterator<Object> valIt = env.vals.listIterator();
+            ListIterator<String> varIt = env.variables.listIterator();
+            ListIterator<ReturnType> valIt = env.values.listIterator();
 
             while (valIt.hasNext()) {
                 String var = varIt.next();

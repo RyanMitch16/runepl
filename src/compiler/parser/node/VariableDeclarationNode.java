@@ -1,6 +1,9 @@
 package compiler.parser.node;
 
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnType;
+import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeList;
@@ -29,24 +32,12 @@ public class VariableDeclarationNode extends Node{
         return new VariableDeclarationNode(NodeType.VariableDeclaration, var, identifiers);
     }
 
-    public Object eval(Environment env){
+    public ReturnTypeList eval(Environment env) throws RunTimeException{
 
-        LinkedList<String> identifiers = (LinkedList<String>) children[0].eval(env);
-        LinkedList<Object> expressions = (children.length == 2) ? (LinkedList<Object>) children[1].eval(env) : null;
+        LinkedList<String> identifiers = ((IdentifierListNode) children[0]).getIdentifierNames();
+        ReturnTypeList expressions = (children.length == 2) ? children[1].eval(env) : new ReturnTypeList();
 
-        ListIterator<String> identifierIterator = identifiers.listIterator();
-        ListIterator<Object> expressionIterator = expressions.listIterator();
-
-        while (identifierIterator.hasNext()) {
-            String identifier = identifierIterator.next();
-
-            if (expressionIterator.hasNext()) {
-
-                env.insert(identifier, expressionIterator.next());
-            } else {
-                env.insert(identifier, null);
-            }
-        }
+        env.insert(identifiers, expressions);
 
         return null;
     }

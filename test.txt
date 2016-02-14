@@ -1,22 +1,4 @@
 
-var createThing = func(objName, y):(
-
-    var name = objName
-
-    var myFunc = (func(x): return y + x)
-
-    return this
-)
-
-
-var multiReturn = func(x, y):(
-
-    return x + 1, y - 1
-)
-
-var obj = createThing("Ryan", 12)
-
-//return obj.name + obj.myFunc(3)
-
-return 1, 2, 3
+var a = (func(x): return x + 1, 10)
+return a(8)
 

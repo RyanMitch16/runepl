@@ -45,21 +45,21 @@ public abstract class NodeList extends Node {
     }
 
     /**
-     *
-     * @param type
-     * @param val
-     * @param value
+     * Instantiate the list with no next node signifying the end of the list.
+     * @param type the type of node list
+     * @param del the lexeme that represents the position of the list in the file
+     * @param value the node the list holds (the car of the cons)
      */
-    public NodeList(NodeType type, Lexeme val, Node value){
-        super(type, val, value);
+    public NodeList(NodeType type, Lexeme del, Node value){
+        super(type, del, value);
     }
 
     /**
-     *
-     * @param type
-     * @param del
-     * @param value
-     * @param next
+     * Instantiate the list with a next node signifying the list has more nodes to it.
+     * @param type the type of node list
+     * @param del the lexeme that represents the position of the list in the file
+     * @param value the node the list holds (the car of the cons)
+     * @param next the next node list in the list (the cdr of the cons)
      */
     public NodeList(NodeType type, Lexeme del, Node value, NodeList next){
         super(type, del, value, next);

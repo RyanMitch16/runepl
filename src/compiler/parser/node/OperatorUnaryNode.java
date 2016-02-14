@@ -1,6 +1,7 @@
 package compiler.parser.node;
 
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeType;
@@ -24,7 +25,7 @@ public class OperatorUnaryNode extends Node {
         return new OperatorUnaryNode(NodeType.OperationNegation, op, operand);
     }
 
-    public Object eval(Environment env) {
+    public ReturnTypeList eval(Environment env) {
         return null;
     }
 }

@@ -1,6 +1,7 @@
 package compiler.parser.node;
 
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeList;
@@ -26,14 +27,18 @@ public class IdentifierListNode extends NodeList {
         return new IdentifierListNode(NodeType.IdentifierList, comma, head, next);
     }
 
-    public LinkedList<String> eval(Environment env) {
+    public LinkedList<String> getIdentifierNames() {
         NodeList.Iterator identifierIterator = getIterator();
         LinkedList<String> identifiers = new LinkedList<>();
 
         while (identifierIterator.hasNext()) {
-            identifiers.add(((IdentifierNode) identifierIterator.next()).getIdentifier());
+            identifiers.add(((IdentifierNode) identifierIterator.next()).getIdentifierName());
         }
 
         return identifiers;
+    }
+
+    public ReturnTypeList eval(Environment env) {
+        return null;
     }
 }

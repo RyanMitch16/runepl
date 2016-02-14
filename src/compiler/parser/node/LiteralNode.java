@@ -1,13 +1,13 @@
 package compiler.parser.node;
 
-import compiler.interpreter.Environment;
+import compiler.interpreter.*;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeType;
 
 public class LiteralNode extends Node{
 
-    private Object value;
+    private ReturnType value;
 
     /**
      *
@@ -21,24 +21,24 @@ public class LiteralNode extends Node{
 
     public static LiteralNode createLiteralDecimal(Lexeme lexeme){
         LiteralNode node = new LiteralNode(NodeType.LiteralDecimal, lexeme);
-        node.value = new Double(lexeme.text);
+        node.value = new TypeDouble(lexeme.text);
         return node;
     }
 
     public static LiteralNode createLiteralInteger(Lexeme lexeme){
         LiteralNode node = new LiteralNode(NodeType.LiteralInteger, lexeme);
-        node.value = new Integer(lexeme.text);
+        node.value = new TypeInteger(lexeme.text);
         return node;
     }
 
     public static LiteralNode createLiteralString(Lexeme lexeme){
         LiteralNode node = new LiteralNode(NodeType.LiteralString, lexeme);
-        node.value = lexeme.text;
+        node.value = new TypeString(lexeme.text);
         return node;
     }
 
-    public Object eval(Environment env) {
-        return value;
+    public ReturnTypeList eval(Environment env) {
+        return new ReturnTypeList(value);
     }
 
 }

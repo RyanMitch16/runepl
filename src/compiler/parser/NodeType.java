@@ -1,5 +1,8 @@
 package compiler.parser;
 
+/**
+ * The different types of nodes that form the parse tree.
+ */
 public enum NodeType {
 
     AccessElement,

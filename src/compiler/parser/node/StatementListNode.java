@@ -1,6 +1,8 @@
 package compiler.parser.node;
 
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeList;
@@ -24,7 +26,7 @@ public class StatementListNode extends NodeList {
         return new StatementListNode(NodeType.StatementList, comma, head, next);
     }
 
-    public Object eval(Environment env){
+    public ReturnTypeList eval(Environment env) throws RunTimeException{
 
         if (children.length == 1) {
             return children[0].eval(env); }

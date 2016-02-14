@@ -1,8 +1,10 @@
 package compiler;
 
+import compiler.lexer.Lexeme;
+
 public class RunTimeException extends Exception {
 
-    public RunTimeException(int beginLine, int beginPos, String msg){
-        super("Run time error at ("+beginLine+":"+beginPos+"): " +msg);
+    public RunTimeException(Lexeme lexeme, String msg){
+        super("Run time error at ("+lexeme.beginLine+":"+lexeme.beginPos+"): " +msg);
     }
 }

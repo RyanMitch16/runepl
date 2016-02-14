@@ -1,11 +1,13 @@
 package compiler.parser.node;
 
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnType;
+import compiler.interpreter.ReturnTypeList;
+import compiler.interpreter.TypeFunction;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeType;
-
-import java.util.LinkedList;
 
 public class FunctionCallNode extends Node {
 
@@ -26,14 +28,21 @@ public class FunctionCallNode extends Node {
         return new FunctionCallNode(NodeType.FunctionCall, dot, expression);
     }
 
-    public Object eval(Environment env) {
+    public ReturnTypeList eval(Environment env) throws RunTimeException{
 
-        Object func = children[0].eval(env);
+        ReturnTypeList func = children[0].eval(env);
 
-        LinkedList<String> parameters = ((AnonFunctionNode) func).getParameters();
-        LinkedList<Object> arguments = (children.length == 1)? new LinkedList<>() : ((ExpressionListNode) children[1]).eval(env);
+        if (func.size() == 0)
+            throw new RunTimeException(children[0].lexeme, "Unable to call function on a null reference");
 
-        Environment newEnv = ((AnonFunctionNode) func).env.extend(parameters, arguments); //TODO: Extend environment
-        return ((AnonFunctionNode) func).getBody().eval(newEnv);
+        if (func.size() > 1)
+            throw new RunTimeException(children[0].lexeme, "Unable to call function on multiple references");
+
+        ReturnType functionObject = func.getFirst();
+        if (!(functionObject instanceof TypeFunction))
+            throw new RunTimeException(children[0].lexeme, "Unable to call function on a non-function reference");
+
+        ReturnTypeList arguments = (children.length == 1)? new ReturnTypeList() : children[1].eval(env);
+        return ((TypeFunction) functionObject).call(arguments);
     }
 }

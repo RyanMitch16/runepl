@@ -1,6 +1,8 @@
 package compiler.parser;
 
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 
 import java.util.ArrayList;
@@ -117,6 +119,7 @@ public abstract class Node {
         return out;
     }
 
-    public abstract Object eval(Environment env);
+
+    public abstract ReturnTypeList eval(Environment env) throws RunTimeException;
 }
 

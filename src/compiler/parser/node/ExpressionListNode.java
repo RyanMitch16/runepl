@@ -1,13 +1,12 @@
 package compiler.parser.node;
 
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeList;
 import compiler.parser.NodeType;
-
-import java.util.LinkedList;
-import java.util.ListIterator;
 
 public class ExpressionListNode extends NodeList {
 
@@ -27,22 +26,12 @@ public class ExpressionListNode extends NodeList {
         return new ExpressionListNode(NodeType.ExpressionList, comma, head, next);
     }
 
-    public LinkedList<Object> eval(Environment env) {
+    public ReturnTypeList eval(Environment env) throws RunTimeException{
+        ReturnTypeList expression = new ReturnTypeList();
+
         NodeList.Iterator expressionIterator = getIterator();
-        LinkedList<Object> expression = new LinkedList<>();
-
         while (expressionIterator.hasNext()) {
-
-            Object result = expressionIterator.next().eval(env);
-            if (result instanceof LinkedList) {
-
-                ListIterator<Object> valuesIt = ((LinkedList<Object>) result).listIterator();
-                while (valuesIt.hasNext()) {
-                    expression.add(valuesIt.next());
-                }
-            } else {
-                expression.add(result);
-            }
+            expression.concat(expressionIterator.next().eval(env));
         }
 
         return expression;

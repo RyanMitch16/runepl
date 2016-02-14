@@ -1,6 +1,9 @@
 package compiler.parser.node;
 
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnType;
+import compiler.interpreter.ReturnTypeList;
+import compiler.interpreter.TypeFunction;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeType;
@@ -32,16 +35,12 @@ public class AnonFunctionNode extends Node {
     }
 
     public LinkedList<String> getParameters(){
-        return (children.length == 1)? new LinkedList<>() : ((IdentifierListNode) children[0]).eval(null);
+        return (children.length == 1)? new LinkedList<>() : ((IdentifierListNode) children[0]).getIdentifierNames();
     }
 
-    public Environment env = null;
+    public ReturnTypeList eval(Environment env) {
 
-    public Object eval(Environment env) {
-        if (this.env == null){
-            this.env = env;
-        }
-        return this;
+        return new ReturnTypeList(new TypeFunction(env, this));
     }
 
 }

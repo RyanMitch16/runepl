@@ -1,7 +1,10 @@
 package compiler.parser.node;
 
 import compiler.BuildException;
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnType;
+import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeType;
@@ -41,52 +44,24 @@ public class OperatorBinaryNode extends Node {
     }
 
 
-    public Object evalAddition(Environment env){
+    public ReturnTypeList eval(Environment env) throws RunTimeException{
 
-        Object leftValue = children[0].eval(env);
-        if (leftValue instanceof LinkedList && ((LinkedList) leftValue).size() == 1) {
-            leftValue = ((LinkedList) leftValue).peek();
-        }
+        ReturnTypeList leftValueExpressions = children[0].eval(env);
+        if (leftValueExpressions.size() == 0)
+            throw new RunTimeException(lexeme,"Unable to "+lexeme+" with a null left operand");
 
-        Object rightValue = children[1].eval(env);
-        if (rightValue instanceof LinkedList && ((LinkedList) rightValue).size() == 1) {
-            rightValue = ((LinkedList) rightValue).peek();
-        }
+        if (leftValueExpressions.size() > 1)
+            throw new RunTimeException(lexeme,"Unable to "+lexeme+" with a multiple left operands");
 
-        if (leftValue instanceof Double) {
-            if (rightValue instanceof Integer){
-                return (Double) leftValue + (Integer) rightValue;
-            } else if (rightValue instanceof Double){
-                return (Double) leftValue + (Double) rightValue;
-            } else if (rightValue instanceof String) {
-                return (Double) leftValue + (String) rightValue;
-            }
-        } else if (leftValue instanceof Integer) {
-            if (rightValue instanceof Integer){
-                return (Integer) leftValue + (Integer) rightValue;
-            } else if (rightValue instanceof Double){
-                return (Integer) leftValue + (Double) rightValue;
-            } else if (rightValue instanceof String) {
-                return (Integer) leftValue + (String) rightValue;
-            }
-        } else if (leftValue instanceof String) {
-            if (rightValue instanceof Integer) {
-                return (String) leftValue + (Integer) rightValue;
-            } else if (rightValue instanceof Double) {
-                return (String) leftValue + (Double) rightValue;
-            } else if (rightValue instanceof String) {
-                return (String) leftValue + (String) rightValue;
-            }
-        }
+        ReturnTypeList rightValueExpressions = children[1].eval(env);
+        if (rightValueExpressions.size() == 0)
+            throw new RunTimeException(lexeme,"Unable to "+lexeme+" with a right left operand");
 
-        return null;
-    }
+        if (rightValueExpressions.size() > 1)
+            throw new RunTimeException(lexeme,"Unable to "+lexeme+" with a multiple right operands");
 
-    public Object eval(Environment env) {
-
-        if (type == NodeType.OperationAddition) {
-            return evalAddition(env);
-        }
+        if (type == NodeType.OperationAddition)
+            return new ReturnTypeList(leftValueExpressions.getFirst().plus(lexeme, rightValueExpressions.getFirst()));
 
         return null;
     }

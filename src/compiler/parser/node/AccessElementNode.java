@@ -1,6 +1,9 @@
 package compiler.parser.node;
 
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnType;
+import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeType;
@@ -20,7 +23,7 @@ public class AccessElementNode extends Node {
         return new AccessElementNode(NodeType.AccessElement, dot, expression, index);
     }
 
-    public Object eval(Environment env) {
+    public ReturnTypeList eval(Environment env) throws RunTimeException {
         return null;
     }
 }

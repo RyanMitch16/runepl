@@ -16,7 +16,7 @@ public class Interpreter {
 
     }
 
-    public void begin(){
+    public void begin() throws RunTimeException{
         System.out.println(treeRoot.eval(env));
     }
 
