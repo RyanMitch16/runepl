@@ -34,7 +34,7 @@ public class VariableDeclarationNode extends Node{
 
     public ReturnTypeList eval(Environment env) throws RunTimeException{
 
-        LinkedList<String> identifiers = ((IdentifierListNode) children[0]).getIdentifierNames();
+        LinkedList<Lexeme> identifiers = ((IdentifierListNode) children[0]).getIdentifierNames();
         ReturnTypeList expressions = (children.length == 2) ? children[1].eval(env) : new ReturnTypeList();
 
         env.insert(identifiers, expressions);

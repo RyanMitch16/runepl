@@ -1,38 +1,50 @@
 package compiler.interpreter;
 
+import compiler.RunTimeException;
+import compiler.lexer.Lexeme;
+
 import java.util.LinkedList;
 import java.util.ListIterator;
 
 public class Environment {
 
-    public LinkedList<String> variables;
-    public LinkedList<ReturnType> values;
-    
-    public Environment nextEnvironment;
+    //The list of variables in the environment
+    private LinkedList<String> variables;
 
+    //The list of values of the variables in the environment
+    private LinkedList<ReturnType> values;
+
+    //The parent environment this environment came from
+    private Environment parentEnvironment;
+
+    /**
+     * Initialize an empty environment.
+     */
     public Environment(){
         variables = new LinkedList<>();
         values = new LinkedList<>();
+        insertBuiltIn("this", new TypeObject(this));
     }
 
-    /*public Environment(LinkedList<String> variables){
-        this.variables = variables;
-        values = new LinkedList<>();
-    }*/
-
-    public Environment(LinkedList<String> variables, ReturnTypeList values){
+    /**
+     * Initialize an environment with the default variables and values. If the variable list length exceeds the value
+     * list length, then the excess variables will be set to null. If the values list exceeds the variable list, the
+     * excess variables will not be added to the environment.
+     * @param variables the list of variables to add to the environment
+     * @param values the list of values of the variables
+     */
+    public Environment(LinkedList<Lexeme> variables, ReturnTypeList values){
 
         this.variables = new LinkedList<>();
         this.values = new LinkedList<>();
+        insertBuiltIn("this", new TypeObject(this));
 
-        ListIterator<String> identifierIterator = variables.listIterator();
+        ListIterator<Lexeme> identifierIterator = variables.listIterator();
         ListIterator<ReturnType> expressionIterator = values.listIterator();
 
         while (identifierIterator.hasNext()) {
-            String identifier = identifierIterator.next();
-
+            Lexeme identifier = identifierIterator.next();
             if (expressionIterator.hasNext()) {
-
                 insert(identifier, expressionIterator.next());
             } else {
                 insert(identifier, null);
@@ -40,33 +52,59 @@ public class Environment {
         }
     }
 
+    /**
+     * Extend the environment by creating a sub-environment of this environment.
+     * @return the sub-environment
+     */
     public Environment extend(){
         Environment e = new Environment();
-        e.nextEnvironment = this;
+        e.parentEnvironment = this;
         return e;
     }
 
-    public Environment extend(LinkedList<String> variables, ReturnTypeList values){
+    /**
+     * Extend the environment by creating a sub-environment of this environment with the specified variables and values.
+     * If the variable list length exceeds the value list length, then the excess variables will be set to null.
+     * If the values list exceeds the variable list, the excess variables will not be added to the environment.
+     * @param variables the list of variables to add to the environment
+     * @param values the list of values of the variables
+     * @return the sub-environment
+     */
+    public Environment extend(LinkedList<Lexeme> variables, ReturnTypeList values){
         Environment e = new Environment(variables, values);
-        e.nextEnvironment = this;
+        e.parentEnvironment = this;
         return e;
     }
 
-    public ReturnType insert(String variable, ReturnType value){
+    /**
+     * Add the variable with the specified value to the environment.
+     * @param variable the list of variables to add to the environment
+     * @param value the list of values of the variables
+     */
+    public void insert(Lexeme variable, ReturnType value){
+        variables.push(variable.text);
+        values.push(value);
+    }
+
+    public void insertBuiltIn(String variable, ReturnType value) {
         variables.push(variable);
         values.push(value);
-        return value;
     }
 
-    public void insert(LinkedList<String> variables, ReturnTypeList values){
-        ListIterator<String> identifierIterator = variables.listIterator();
+    /**
+     * Add the variables with the specified values to the environment.
+     * If the variable list length exceeds the value list length, then the excess variables will be set to null.
+     * If the values list exceeds the variable list, the excess variables will not be added to the environment.
+     * @param variables the list of variables to add to the environment
+     * @param values the list of values of the variables
+     */
+    public void insert(LinkedList<Lexeme> variables, ReturnTypeList values){
+        ListIterator<Lexeme> identifierIterator = variables.listIterator();
         ListIterator<ReturnType> expressionIterator = values.listIterator();
 
         while (identifierIterator.hasNext()) {
-            String identifier = identifierIterator.next();
-
+            Lexeme identifier = identifierIterator.next();
             if (expressionIterator.hasNext()) {
-
                 insert(identifier, expressionIterator.next());
             } else {
                 insert(identifier, null);
@@ -74,7 +112,12 @@ public class Environment {
         }
     }
 
-    public ReturnType lookUp(String variable){
+    /**
+     * Look for the value of the variable in this and parent environment.
+     * @param variable the variable name to look up
+     * @return the value of the most local variable
+     */
+    public ReturnType lookUp(Lexeme variable) throws RunTimeException{
 
         Environment env = this;
         while (env != null) {
@@ -84,18 +127,23 @@ public class Environment {
             while (varIt.hasNext()) {
                 String var = varIt.next();
                 ReturnType val = valIt.next();
-                if (var.equals(variable)) {
+                if (var.equals(variable.text)) {
                     return val;
                 }
             }
 
-            env = env.nextEnvironment;
+            env = env.parentEnvironment;
         }
 
-        return null;
+        throw new RunTimeException(variable, "Uninitialized variable "+variable.text);
     }
 
-    public void update(String variable, ReturnType value){
+    /**
+     * Update the value of the most local variable with this name.
+     * @param variable the variable name to look up
+     * @param value the value to set the variable to
+     */
+    public void update(Lexeme variable, ReturnType value) throws RunTimeException{
 
         Environment env = this;
         while (env != null) {
@@ -105,14 +153,16 @@ public class Environment {
             while (valIt.hasNext()) {
                 String var = varIt.next();
                 valIt.next();
-                if (var.equals(variable)) {
+                if (var.equals(variable.text)) {
                     valIt.set(value);
                     return;
                 }
             }
 
-            env = env.nextEnvironment;
+            env = env.parentEnvironment;
         }
+
+        throw new RunTimeException(variable, "Uninitialized variable "+variable.text);
     }
 
 }

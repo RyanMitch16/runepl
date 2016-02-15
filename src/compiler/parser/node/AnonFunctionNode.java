@@ -1,5 +1,6 @@
 package compiler.parser.node;
 
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
 import compiler.interpreter.ReturnType;
 import compiler.interpreter.ReturnTypeList;
@@ -34,7 +35,7 @@ public class AnonFunctionNode extends Node {
         return (children.length == 1)? children[0] : (children[1]);
     }
 
-    public LinkedList<String> getParameters(){
+    public LinkedList<Lexeme> getParameters() throws RunTimeException{
         return (children.length == 1)? new LinkedList<>() : ((IdentifierListNode) children[0]).getIdentifierNames();
     }
 

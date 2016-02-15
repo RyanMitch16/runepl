@@ -6,10 +6,11 @@ import compiler.lexer.Lexeme;
 import compiler.lexer.LexemeType;
 import compiler.parser.Node;
 import compiler.parser.node.AnonFunctionNode;
+import compiler.parser.node.StatementListNode;
 
 /**
- * AnonFunctionDeclaration : FUNC PAREN_LEFT OptIdentifierList PAREN_RIGHT COLON FunctionStatement
- *                         | FUNC PAREN_LEFT OptIdentifierList PAREN_RIGHT COLON PAREN_LEFT NEW_LINE TAB_INC FunctionStatementList NEW_LINE TAB_DEC PAREN_RIGHT
+ * AnonFunctionDeclaration : FUNC PAREN_LEFT OptIdentifierList PAREN_RIGHT COLON Statement
+ *                         | FUNC PAREN_LEFT OptIdentifierList PAREN_RIGHT COLON PAREN_LEFT NEW_LINE TAB_INC StatementList TAB_DEC PAREN_RIGHT
  */
 public class AnonFunctionDeclaration {
 
@@ -56,7 +57,8 @@ public class AnonFunctionDeclaration {
         }
 
         if (Statement.pending(parser)) {
-            Node body = Statement.match(parser);
+            Lexeme lexeme = parser.getCurrentLexeme();
+            Node body = StatementListNode.createStatementList(lexeme, Statement.match(parser));
             if (parameters == null) {
                 return AnonFunctionNode.createAnonFunction(func, body);
             } else {

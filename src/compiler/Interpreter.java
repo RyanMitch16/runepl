@@ -1,6 +1,9 @@
 package compiler;
 
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnTypeList;
+import compiler.interpreter.TypeFunction;
+import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 
 import java.io.File;
@@ -14,6 +17,19 @@ public class Interpreter {
         treeRoot = tree;
         env = new Environment();
 
+        //TODO: Add default functions
+
+        env.insertBuiltIn("print",new TypeFunction(env, null) {
+
+            public ReturnTypeList call(Lexeme lexeme, ReturnTypeList arguments) throws RunTimeException {
+                if (arguments.size() == 1) {
+                    System.out.println(arguments.getFirst().toString());
+                    return new ReturnTypeList();
+                }
+
+                throw new RunTimeException(lexeme, "Incorrect # of arguments -- fix error message later :P");
+            }
+        });
     }
 
     public void begin() throws RunTimeException{

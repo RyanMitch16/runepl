@@ -2,7 +2,6 @@ package compiler.parser.grammar;
 
 import compiler.BuildException;
 import compiler.Parser;
-import compiler.lexer.Lexeme;
 import compiler.lexer.LexemeType;
 import compiler.parser.Node;
 import compiler.parser.node.IdentifierNode;
@@ -11,6 +10,8 @@ import compiler.parser.node.LiteralNode;
 /**
  * Expression1 : PAREN_LEFT Expression PAREN_RIGHT
  *             | PAREN_LEFT AnonFunctionDeclaration PAREN_RIGHT
+ *             | TRUE
+ *             | FALSE
  *             | LITERAL_INTEGER
  *             | LITERAL_STRING
  *             | LITERAL_DECIMAL
@@ -24,7 +25,8 @@ public class Expression1 {
      * @return whether the grammar is pending
      */
     public static boolean pending(Parser parser){
-        return parser.check(LexemeType.PAREN_LEFT, LexemeType.LITERAL_INTEGER, LexemeType.LITERAL_STRING,
+        return parser.check(LexemeType.TRUE, LexemeType.FALSE, LexemeType.PAREN_LEFT,
+                LexemeType.LITERAL_INTEGER, LexemeType.LITERAL_STRING,
                 LexemeType.LITERAL_DECIMAL, LexemeType.IDENTIFIER);
     }
 
@@ -40,10 +42,16 @@ public class Expression1 {
             parser.match(LexemeType.PAREN_LEFT);
 
             if (Expression.pending(parser)) {
+
                 Node expression = Expression.match(parser);
+
                 parser.match(LexemeType.PAREN_RIGHT);
                 return expression;
             }
+        }
+
+        if (parser.check(LexemeType.TRUE) || parser.check(LexemeType.FALSE)){
+            return LiteralNode.createLiteralBoolean(parser.advance());
         }
 
         if (parser.check(LexemeType.LITERAL_DECIMAL)){

@@ -37,6 +37,12 @@ public class LiteralNode extends Node{
         return node;
     }
 
+    public static LiteralNode createLiteralBoolean(Lexeme lexeme){
+        LiteralNode node = new LiteralNode(NodeType.LiteralBoolean, lexeme);
+        node.value = new TypeBoolean(lexeme);
+        return node;
+    }
+
     public ReturnTypeList eval(Environment env) {
         return new ReturnTypeList(value);
     }

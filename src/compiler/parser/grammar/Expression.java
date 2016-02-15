@@ -8,7 +8,7 @@ import compiler.parser.Node;
 
 /**
  * Expression : AnonFunctionDeclaration
- *            | Expression5
+ *            | Expression7
  */
 public class Expression {
 
@@ -18,7 +18,7 @@ public class Expression {
      * @return whether the grammar is pending
      */
     public static boolean pending(Parser parser){
-        return AnonFunctionDeclaration.pending(parser) || Expression5.pending(parser);
+        return AnonFunctionDeclaration.pending(parser) || Expression7.pending(parser);
     }
 
     /**
@@ -33,8 +33,8 @@ public class Expression {
             return AnonFunctionDeclaration.match(parser);
         }
 
-        if  (Expression5.pending(parser)) {
-            return Expression5.match(parser);
+        if  (Expression7.pending(parser)) {
+            return Expression7.match(parser);
         }
         throw new BuildException(parser.getCurrentLexeme(), "Expected an expression");
     }

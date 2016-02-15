@@ -1,5 +1,6 @@
 package compiler.parser.node;
 
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
 import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
@@ -27,9 +28,9 @@ public class IdentifierListNode extends NodeList {
         return new IdentifierListNode(NodeType.IdentifierList, comma, head, next);
     }
 
-    public LinkedList<String> getIdentifierNames() {
+    public LinkedList<Lexeme> getIdentifierNames() throws RunTimeException{
         NodeList.Iterator identifierIterator = getIterator();
-        LinkedList<String> identifiers = new LinkedList<>();
+        LinkedList<Lexeme> identifiers = new LinkedList<>();
 
         while (identifierIterator.hasNext()) {
             identifiers.add(((IdentifierNode) identifierIterator.next()).getIdentifierName());

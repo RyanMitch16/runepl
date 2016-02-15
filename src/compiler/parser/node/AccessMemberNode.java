@@ -50,6 +50,11 @@ public class AccessMemberNode extends Node {
             throw new RunTimeException(children[0].lexeme, "Unable to retrieve a member of multiple reference");
         }
 
-        return new ReturnTypeList(expressionValue.getFirst().lookUp(((IdentifierNode) children[1]).getIdentifierName()));
+        if (!(expressionValue.getFirst() instanceof TypeObject))
+            throw new RunTimeException(children[0].lexeme, "Unable to retrieve a member a non object reference");
+
+
+        return new ReturnTypeList(((TypeObject) expressionValue.getFirst()).getEnv().lookUp(
+                ((IdentifierNode) children[1]).getIdentifierName()));
     }
 }

@@ -1,4 +1,44 @@
 
-var a = (func(x): return x + 1, 10)
-return a(8)
+var power = func(x, n):(
+
+    var iterator = func(i, product):(
+        if (i == n):
+            return product
+        return iterator(i+1, product * x)
+    )
+    return iterator(0, 1)
+)
+
+var sqrt = func(x):(
+
+    var recurse = func(left, right):(
+        var middle = left + (right-left)/2.0
+        if (middle == left):
+            return middle
+        if (middle*middle > x):
+            return recurse(left,middle)
+        return recurse(middle,right)
+    )
+
+    return recurse(0.0,x*1.0)
+)
+
+var nrt = func(x, n):(
+
+    var recurse = func(left, right):(
+        var middle = left + (right-left)/2.0
+        if (middle == left):
+            return middle
+        if (power(middle,n) > x):
+            return recurse(left,middle)
+        return recurse(middle,right)
+    )
+
+    return recurse(0.0,x*1.0)
+
+)
+
+
+print(nrt(27,3))
+
 

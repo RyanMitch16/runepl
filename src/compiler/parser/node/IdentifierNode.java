@@ -1,5 +1,6 @@
 package compiler.parser.node;
 
+import compiler.RunTimeException;
 import compiler.interpreter.Environment;
 import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
@@ -21,11 +22,11 @@ public class IdentifierNode extends Node {
         return new IdentifierNode(NodeType.Identifier, lexeme);
     }
 
-    public String getIdentifierName(){
-        return lexeme.text;
+    public Lexeme getIdentifierName(){
+        return lexeme;
     }
 
-    public ReturnTypeList eval(Environment env) {
-        return new ReturnTypeList(env.lookUp(lexeme.text));
+    public ReturnTypeList eval(Environment env) throws RunTimeException {
+        return new ReturnTypeList(env.lookUp(lexeme));
     }
 }

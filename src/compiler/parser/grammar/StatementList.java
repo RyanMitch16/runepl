@@ -9,8 +9,10 @@ import compiler.parser.NodeList;
 import compiler.parser.node.StatementListNode;
 
 /**
- * StatementList : Statement NEW_LINE StatementList
+ * StatementList : Statement LINE_NEW StatementList
+ *               | ControlStatement StatementList
  *               | Statement
+ *               | ControlStatement
  */
 public class StatementList {
 
@@ -20,7 +22,7 @@ public class StatementList {
      * @return whether the grammar is pending
      */
     public static boolean pending(Parser parser){
-        return Statement.pending(parser);
+        return Statement.pending(parser) | ControlStatement.pending(parser);
     }
 
     /**
@@ -31,16 +33,26 @@ public class StatementList {
      */
     public static NodeList match(Parser parser) throws BuildException {
 
+        Lexeme pos = parser.getCurrentLexeme();
         if (Statement.pending(parser)) {
-            Lexeme pos = parser.getCurrentLexeme();
             Node head = Statement.match(parser);
 
             if (parser.check(LexemeType.LINE_NEW)) {
-                Lexeme newLine = parser.advance();
+                parser.advance();
 
                 if (StatementList.pending(parser)) {
-                    return StatementListNode.createStatementList(newLine, head, StatementList.match(parser));
+                    return StatementListNode.createStatementList(pos, head, StatementList.match(parser));
                 }
+            }
+
+            return StatementListNode.createStatementList(pos, head);
+        }
+
+        if (ControlStatement.pending(parser)) {
+            Node head = ControlStatement.match(parser);
+
+            if (StatementList.pending(parser)) {
+                return StatementListNode.createStatementList(pos, head, StatementList.match(parser));
             }
 
             return StatementListNode.createStatementList(pos, head);

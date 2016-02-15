@@ -55,14 +55,16 @@ public class Lexer {
      */
     public static final HashMap<String, LexemeType> keywordMap = new HashMap<>();
     static {
-        keywordMap.put("class", LexemeType.CLASS);
+
         keywordMap.put("else", LexemeType.ELSE);
+        keywordMap.put("false", LexemeType.FALSE);
         keywordMap.put("func", LexemeType.FUNC);
         keywordMap.put("if", LexemeType.IF);
         keywordMap.put("return", LexemeType.RETURN);
+        keywordMap.put("true", LexemeType.TRUE);
         keywordMap.put("var", LexemeType.VAR);
         keywordMap.put("while", LexemeType.WHILE);
-        keywordMap.put("yield", LexemeType.YIELD);
+
     }
 
     //The count of the number of spaces that equals a tab

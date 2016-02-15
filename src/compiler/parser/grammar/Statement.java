@@ -5,6 +5,7 @@ import compiler.Parser;
 import compiler.lexer.Lexeme;
 import compiler.lexer.LexemeType;
 import compiler.parser.Node;
+import compiler.parser.NodeList;
 import compiler.parser.node.ReturnNode;
 
 /**
@@ -18,7 +19,6 @@ import compiler.parser.node.ReturnNode;
  *           | ExpressionList DIVIDES_EQUALS ExpressionList
  *           | ExpressionList TIMES_EQUALS ExpressionList
  *           | ExpressionList MODULUS_EQUALS ExpressionList
- *           | RETURN ExpressionList
  */
 public class Statement {
 
@@ -39,6 +39,8 @@ public class Statement {
      */
     public static Node match(Parser parser) throws BuildException {
 
+
+
         if (parser.check(LexemeType.RETURN)) {
             Lexeme returnLexeme = parser.advance();
             if (ExpressionList.pending(parser)) {
@@ -56,7 +58,7 @@ public class Statement {
         }
 
         if (ExpressionList.pending(parser)) {
-            Node expressions = ExpressionList.match(parser);
+            NodeList expressions = ExpressionList.match(parser);
             //TODO: Add assignment and check that the expressions are all identifiers
             return expressions;
         }
