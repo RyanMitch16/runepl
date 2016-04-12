@@ -12,6 +12,7 @@ public class TypeDouble extends ReturnType {
      * @param value the value of the double read from the lexer
      */
     public TypeDouble(String value){
+        super(new Environment());
         this.value = new Double(value);
     }
 
@@ -20,6 +21,7 @@ public class TypeDouble extends ReturnType {
      * @param value the value of the double
      */
     public TypeDouble(Double value){
+        super(new Environment());
         this.value = value;
     }
 
@@ -50,6 +52,8 @@ public class TypeDouble extends ReturnType {
             return new TypeBoolean(((double) value) == ((TypeDouble) right).value);
         if (right instanceof TypeInteger)
             return new TypeBoolean(value == (double) ((TypeInteger) right).value);
+        if (right instanceof TypeNull)
+            return new TypeBoolean(false);
         throw invalidOperationException(op,right);
     }
 
@@ -165,6 +169,8 @@ public class TypeDouble extends ReturnType {
             return new TypeBoolean(((double) value) != ((TypeDouble) right).value);
         if (right instanceof TypeInteger)
             return new TypeBoolean(value != (double) ((TypeInteger) right).value);
+        if (right instanceof TypeNull)
+            return new TypeBoolean(true);
         throw invalidOperationException(op, right);
     }
 

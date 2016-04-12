@@ -82,14 +82,18 @@ public class Parser {
     public static void main(String[] args){
 
         try {
-            Lexer lexer = new Lexer(new File("test.txt"));
+            Lexer lexer = new Lexer(new File("test2.txt"));
             Parser parser = new Parser(lexer);
-            System.out.println(parser.parse());
 
+            //System.out.println(parser.parse()); //Print out the tree
+            parser.parse();
 
         } catch (Exception e) {
-            System.out.println(e);
+            //System.out.println(e);
+            System.out.println("illegal");
+            return;
         }
+        System.out.println("legal");
 
     }
 

@@ -32,21 +32,13 @@ public class IdentifierList {
      */
     public static NodeList match(Parser parser) throws BuildException {
 
-        if (parser.check(LexemeType.IDENTIFIER)) {
-            Lexeme pos = parser.getCurrentLexeme();
-            Node head = IdentifierNode.createIdentifier(parser.advance());
+        Lexeme pos = parser.getCurrentLexeme();
+        Node head = IdentifierNode.createIdentifier(parser.advance());
 
-            if (parser.check(LexemeType.COMMA)) {
-                Lexeme comma = parser.advance();
-                if (IdentifierList.pending(parser)) {
-                    return IdentifierListNode.createIdentifierList(comma, head, IdentifierList.match(parser));
-                } else {
-                    throw new BuildException(comma, "Expected an identifier");
-                }
-            }
-            return IdentifierListNode.createIdentifierList(pos, head);
+        if (parser.check(LexemeType.COMMA)) {
+            Lexeme comma = parser.advance();
+            return IdentifierListNode.createIdentifierList(comma, head, IdentifierList.match(parser));
         }
-
-        throw new BuildException(parser.getCurrentLexeme(), "Expected an identifier or list of identifiers");
+        return IdentifierListNode.createIdentifierList(pos, head);
     }
 }

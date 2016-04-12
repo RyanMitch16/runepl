@@ -2,8 +2,36 @@ package compiler.interpreter;
 
 import compiler.RunTimeException;
 import compiler.lexer.Lexeme;
+import compiler.lexer.LexemeType;
+import compiler.parser.NodeType;
 
 public abstract class ReturnType{
+
+    public final Environment env;
+
+    public ReturnType(Environment env){
+        this.env = env;
+    }
+
+    public ReturnType getMember(Lexeme lexeme) throws RunTimeException{
+        return env.lookUp(lexeme);
+    }
+
+    public void declareMember(String var, ReturnType value) throws RunTimeException{
+        env.insertBuiltIn(var, value);
+    }
+
+    public void setMember(Lexeme lexeme, NodeType opType, ReturnType value) throws RunTimeException{
+        env.update(lexeme, opType, value);
+    }
+
+    public void setElement(Lexeme lexeme, NodeType opType, ReturnTypeList pos, ReturnType value) throws RunTimeException{
+        throw new RunTimeException(lexeme, "Unable to set element an element of a "+getClass().getSimpleName());
+    }
+
+    public ReturnType getElement(Lexeme lexeme, ReturnTypeList pos) throws RunTimeException{
+        throw new RunTimeException(lexeme, "Unable to retrieve element an element of a "+getClass().getSimpleName());
+    }
 
     public ReturnType and(Lexeme op, ReturnType right) throws RunTimeException{
         throw invalidOperationException(op, right);

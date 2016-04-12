@@ -33,32 +33,29 @@ public class Expression6 {
      */
     public static Node match(Parser parser) throws BuildException {
 
-        if (Expression5.pending(parser)) {
-            Node left = Expression5.match(parser);
+        Node left = Expression5.match(parser);
 
-            if (parser.check(LexemeType.GREATER_THAN)) {
-                Lexeme op = parser.advance();
-                return OperatorBinaryNode.createGreaterThan(op, left, Expression5.match(parser));
-            }
-
-            if (parser.check(LexemeType.GREATER_THAN_EQUAL)) {
-                Lexeme op = parser.advance();
-                return OperatorBinaryNode.createGreaterThanEqual(op, left, Expression5.match(parser));
-            }
-
-            if (parser.check(LexemeType.LESS_THAN)) {
-                Lexeme op = parser.advance();
-                return OperatorBinaryNode.createLessThan(op, left, Expression5.match(parser));
-            }
-
-            if (parser.check(LexemeType.LESS_THAN_EQUAL)) {
-                Lexeme op = parser.advance();
-                return OperatorBinaryNode.createLessThanEqual(op, left, Expression5.match(parser));
-            }
-
-            return left;
+        if (parser.check(LexemeType.GREATER_THAN)) {
+            Lexeme op = parser.advance();
+            return OperatorBinaryNode.createGreaterThan(op, left, Expression5.match(parser));
         }
 
-        throw new BuildException(parser.getCurrentLexeme(), "Expected an expression");
+        if (parser.check(LexemeType.GREATER_THAN_EQUAL)) {
+            Lexeme op = parser.advance();
+            return OperatorBinaryNode.createGreaterThanEqual(op, left, Expression5.match(parser));
+        }
+
+        if (parser.check(LexemeType.LESS_THAN)) {
+            Lexeme op = parser.advance();
+            return OperatorBinaryNode.createLessThan(op, left, Expression5.match(parser));
+        }
+
+        if (parser.check(LexemeType.LESS_THAN_EQUAL)) {
+            Lexeme op = parser.advance();
+            return OperatorBinaryNode.createLessThanEqual(op, left, Expression5.match(parser));
+        }
+
+        return left;
+
     }
 }

@@ -24,10 +24,6 @@ public class WhileStatementNode extends Node{
         return new WhileStatementNode(NodeType.WhileStatement, whileLexeme, expression, statementList);
     }
 
-    public static WhileStatementNode createWhileStatement(Lexeme whileLexeme, Node expression, Node statement) {
-        return new WhileStatementNode(NodeType.WhileStatement, whileLexeme, expression, statement);
-    }
-
     public ReturnTypeList eval(Environment env) throws RunTimeException {
 
         while (true) {
@@ -40,7 +36,7 @@ public class WhileStatementNode extends Node{
             if (((TypeBoolean) expressionValue.getFirst()).value) {
 
                 ReturnTypeList value = children[1].eval(env.extend());
-                if (value.size() != 0) {
+                if (value != null) {
                     //TODO: Add break and continue statements as SpecialReturnTypes
                     return value;
                 }

@@ -5,11 +5,13 @@ import compiler.lexer.LexemeType;
 
 import java.io.*;
 import java.math.BigInteger;
+import java.text.Normalizer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Lexer {
+
 
     /**
      * The tree map of all the possible symbols used in the language.
@@ -55,7 +57,6 @@ public class Lexer {
      */
     public static final HashMap<String, LexemeType> keywordMap = new HashMap<>();
     static {
-
         keywordMap.put("else", LexemeType.ELSE);
         keywordMap.put("false", LexemeType.FALSE);
         keywordMap.put("func", LexemeType.FUNC);
@@ -64,7 +65,6 @@ public class Lexer {
         keywordMap.put("true", LexemeType.TRUE);
         keywordMap.put("var", LexemeType.VAR);
         keywordMap.put("while", LexemeType.WHILE);
-
     }
 
     //The count of the number of spaces that equals a tab
@@ -110,7 +110,7 @@ public class Lexer {
 
         //Initiate the default states
         lexemeBuilder = new StringBuilder();
-        currentLine = 0;
+        currentLine = 1;
         currentPosition = 0;
         lineTabLast = 0;
         lineTabCurrent = 0;
@@ -168,7 +168,7 @@ public class Lexer {
     }
 
     /**
-     * Reads the next character from the input.
+     *c Reads the next character from the input.
      * @return the integer value of the character or -1 if the end of the file has been reached
      */
     private char readChar() throws IOException {
@@ -734,18 +734,16 @@ public class Lexer {
 
     public static void main(String[] args){
 
-        System.out.println("Running");
-
         try {
-            Lexer lex = new Lexer(new File("test.txt"));
+            Lexer lex = new Lexer(new File(args[0]));
             Lexeme lexeme = null;
             while ((lexeme == null) || lexeme.type != LexemeType.EOF) {
                 lexeme = lex.lex();
-                System.out.println(lexeme.text + " : "+lexeme.type);
+                System.out.println(lexeme.text+" : "+lexeme.type);
             }
 
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.toString());
         }
     }
 

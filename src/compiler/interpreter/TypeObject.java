@@ -5,18 +5,12 @@ import compiler.lexer.Lexeme;
 
 public class TypeObject extends ReturnType {
 
-    public final Environment value;
-
     /**
      * Instantiate a new object with a pointer to the object environment.
      * @param env the environment which represents the object
      */
     public TypeObject(Environment env){
-        value = env;
-    }
-
-    public Environment getEnv(){
-        return value;
+        super(env);
     }
 
     /**
@@ -28,7 +22,9 @@ public class TypeObject extends ReturnType {
      */
     public TypeBoolean equalEquals(Lexeme op, ReturnType right) throws RunTimeException {
         if (right instanceof TypeObject)
-            return new TypeBoolean((value.equals(((TypeObject) right).value)));
+            return new TypeBoolean((env.equals(((TypeObject) right).env)));
+        if (right instanceof TypeNull)
+            return new TypeBoolean(false);
         throw invalidOperationException(op,right);
     }
 
@@ -41,7 +37,9 @@ public class TypeObject extends ReturnType {
      */
     public TypeBoolean notEquals(Lexeme op, ReturnType right) throws RunTimeException {
         if (right instanceof TypeObject)
-            return new TypeBoolean((!value.equals(((TypeObject) right).value)));
+            return new TypeBoolean((!env.equals(((TypeObject) right).env)));
+        if (right instanceof TypeNull)
+            return new TypeBoolean(true);
         throw invalidOperationException(op,right);
     }
 }

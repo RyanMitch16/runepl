@@ -32,6 +32,8 @@ public class WhileStatement {
      */
     public static Node match(Parser parser) throws BuildException {
 
+
+
         Lexeme whileLexeme = parser.match(LexemeType.WHILE);
         Node expression = Expression.match(parser);
         parser.match(LexemeType.COLON);
@@ -46,12 +48,8 @@ public class WhileStatement {
             return WhileStatementNode.createWhileStatement(whileLexeme, expression, statements);
         }
 
-        if (Statement.pending(parser)) {
-            Lexeme lexeme = parser.getCurrentLexeme();
-            NodeList body =  StatementListNode.createStatementList(lexeme, Statement.match(parser));
-            return WhileStatementNode.createWhileStatement(whileLexeme, expression, body);
-        }
+        NodeList body =  StatementListNode.createStatementList(parser.getCurrentLexeme(), Statement.match(parser));
+        return WhileStatementNode.createWhileStatement(whileLexeme, expression, body);
 
-        throw new BuildException(parser.getCurrentLexeme(), "Expected a while statement");
     }
 }

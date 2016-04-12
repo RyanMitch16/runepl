@@ -19,6 +19,10 @@ public class OperatorBinaryNode extends Node {
         super(type, lexeme, nodes);
     }
 
+    public static OperatorBinaryNode createOperationAnd(Lexeme op, Node left, Node right){
+        return new OperatorBinaryNode(NodeType.OperationAnd, op, left, right);
+    }
+
     public static OperatorBinaryNode createOperationAddition(Lexeme op, Node left, Node right){
         return new OperatorBinaryNode(NodeType.OperationAddition, op, left, right);
     }
@@ -49,6 +53,10 @@ public class OperatorBinaryNode extends Node {
 
     public static OperatorBinaryNode createOperationMultiplication(Lexeme op, Node left, Node right){
         return new OperatorBinaryNode(NodeType.OperationMultiplication, op, left, right);
+    }
+
+    public static OperatorBinaryNode createOperationOr(Lexeme op, Node left, Node right){
+        return new OperatorBinaryNode(NodeType.OperationOr, op, left, right);
     }
 
     public static OperatorBinaryNode createOperationSubtraction(Lexeme op, Node left, Node right){
@@ -84,6 +92,9 @@ public class OperatorBinaryNode extends Node {
         if (type == NodeType.OperationAddition)
             return new ReturnTypeList(leftValueExpressions.getFirst().plus(lexeme, rightValueExpressions.getFirst()));
 
+        if (type == NodeType.OperationAnd)
+                return new ReturnTypeList(leftValueExpressions.getFirst().and(lexeme, rightValueExpressions.getFirst()));
+
         if (type == NodeType.OperationDivision)
             return new ReturnTypeList(leftValueExpressions.getFirst().divides(lexeme, rightValueExpressions.getFirst()));
 
@@ -98,6 +109,9 @@ public class OperatorBinaryNode extends Node {
 
         if (type == NodeType.OperationInverseEquality)
             return new ReturnTypeList(leftValueExpressions.getFirst().notEquals(lexeme, rightValueExpressions.getFirst()));
+
+        if (type == NodeType.OperationOr)
+            return new ReturnTypeList(leftValueExpressions.getFirst().or(lexeme, rightValueExpressions.getFirst()));
 
         if (type == NodeType.OperationSubtraction)
             return new ReturnTypeList(leftValueExpressions.getFirst().minus(lexeme, rightValueExpressions.getFirst()));

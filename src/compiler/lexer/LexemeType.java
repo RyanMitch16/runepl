@@ -1,7 +1,7 @@
 package compiler.lexer;
 
 /**
- * The types of lexemes able to be read in by the compiler.lexer.
+ * The types of lexemes able to be read in by the lexer.
 */
 public enum LexemeType {
     AND,

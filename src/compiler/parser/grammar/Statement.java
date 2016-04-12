@@ -6,7 +6,7 @@ import compiler.lexer.Lexeme;
 import compiler.lexer.LexemeType;
 import compiler.parser.Node;
 import compiler.parser.NodeList;
-import compiler.parser.node.ReturnNode;
+import compiler.parser.node.*;
 
 /**
  * Statement : RETURN ExpressionList
@@ -18,7 +18,6 @@ import compiler.parser.node.ReturnNode;
  *           | ExpressionList MINUS_EQUALS ExpressionList
  *           | ExpressionList DIVIDES_EQUALS ExpressionList
  *           | ExpressionList TIMES_EQUALS ExpressionList
- *           | ExpressionList MODULUS_EQUALS ExpressionList
  */
 public class Statement {
 
@@ -39,8 +38,6 @@ public class Statement {
      */
     public static Node match(Parser parser) throws BuildException {
 
-
-
         if (parser.check(LexemeType.RETURN)) {
             Lexeme returnLexeme = parser.advance();
             if (ExpressionList.pending(parser)) {
@@ -57,13 +54,46 @@ public class Statement {
             return AnonFunctionDeclaration.match(parser);
         }
 
-        if (ExpressionList.pending(parser)) {
-            NodeList expressions = ExpressionList.match(parser);
-            //TODO: Add assignment and check that the expressions are all identifiers
-            return expressions;
+        NodeList expressions = ExpressionList.match(parser);
+
+        //Check if the statement is an assignment statement
+        if (parser.check(LexemeType.EQUALS, LexemeType.PLUS_EQUALS, LexemeType.MINUS_EQUALS,
+                LexemeType.DIVIDES_EQUALS, LexemeType.MODULUS_EQUALS, LexemeType.TIMES_EQUALS)) {
+            Lexeme op = parser.advance();
+
+            if (!checkOnlyIdentifiers(expressions))
+                throw new BuildException(op, "Left side of assignment can only contain identifiers");
+
+            //Convert the expression list to an identifier list
+            expressions = changeToIdentifierList(expressions);
+
+            NodeList values = ExpressionList.match(parser);
+
+            return AssignmentNode.createAssignmentNode(op,expressions, values);
         }
 
-        throw new BuildException(parser.getCurrentLexeme(), "Expected a statement");
+        return expressions;
     }
 
+
+    public static boolean checkOnlyIdentifiers(Node expression) {
+        if (expression instanceof ExpressionListNode ||expression instanceof IdentifierNode ||
+                expression instanceof AccessMemberNode || expression instanceof AccessElementNode) {
+            for (Node child : expression.children) {
+                if (!(expression instanceof AccessElementNode) && !checkOnlyIdentifiers(child))
+                    return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public static NodeList changeToIdentifierList(Node identifiers){
+
+        if (identifiers.children.length == 2)
+            return IdentifierListNode.createIdentifierList(identifiers.lexeme, identifiers.children[0],
+                    changeToIdentifierList(identifiers.children[1]));
+        return IdentifierListNode.createIdentifierList(identifiers.lexeme, identifiers.children[0]);
+
+    }
 }

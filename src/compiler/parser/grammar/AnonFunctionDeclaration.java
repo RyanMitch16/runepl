@@ -40,32 +40,28 @@ public class AnonFunctionDeclaration {
         if (parser.check(LexemeType.PAREN_LEFT)) {
             parser.advance();
             parser.match(LexemeType.LINE_NEW);
-            Lexeme tab = parser.match(LexemeType.TAB_INC);
+            parser.match(LexemeType.TAB_INC);
 
-            if (StatementList.pending(parser)) {
-                Node body = StatementList.match(parser);
-                parser.match(LexemeType.TAB_DEC);
-                parser.match(LexemeType.PAREN_RIGHT);
+            Node body = StatementList.match(parser);
+            parser.match(LexemeType.TAB_DEC);
+            parser.match(LexemeType.PAREN_RIGHT);
 
-                if (parameters == null) {
-                    return AnonFunctionNode.createAnonFunction(func, body);
-                } else {
-                    return AnonFunctionNode.createAnonFunction(func, parameters, body);
-                }
-            }
-            throw new BuildException(tab, "Expected a statement");
-        }
-
-        if (Statement.pending(parser)) {
-            Lexeme lexeme = parser.getCurrentLexeme();
-            Node body = StatementListNode.createStatementList(lexeme, Statement.match(parser));
             if (parameters == null) {
                 return AnonFunctionNode.createAnonFunction(func, body);
             } else {
                 return AnonFunctionNode.createAnonFunction(func, parameters, body);
             }
+
         }
 
-        throw new BuildException(func, "Expected an anonymous function declaration");
+
+        Lexeme lexeme = parser.getCurrentLexeme();
+        Node body = StatementListNode.createStatementList(lexeme, Statement.match(parser));
+        if (parameters == null) {
+            return AnonFunctionNode.createAnonFunction(func, body);
+        } else {
+            return AnonFunctionNode.createAnonFunction(func, parameters, body);
+        }
+
     }
 }

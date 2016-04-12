@@ -31,22 +31,15 @@ public class VariableDeclaration {
     public static Node match(Parser parser) throws BuildException {
 
         Lexeme var = parser.match(LexemeType.VAR);
-        if (IdentifierList.pending(parser)) {
-            Node variables = IdentifierList.match(parser);
+        Node variables = IdentifierList.match(parser);
 
-            if (parser.check(LexemeType.EQUALS)) {
-                Lexeme equals = parser.advance();
+        if (parser.check(LexemeType.EQUALS)) {
+            Lexeme equals = parser.advance();
+            return VariableDeclarationNode.createVariableDeclaration(var, variables, ExpressionList.match(parser));
 
-                if (ExpressionList.pending(parser)) {
-                    return VariableDeclarationNode.createVariableDeclaration(var, variables, ExpressionList.match(parser));
-                } else {
-                    throw new BuildException(equals, "Expected an expression or list of expressions");
-                }
-            }
-
-            return VariableDeclarationNode.createVariableDeclaration(var, variables);
         }
 
-        throw new BuildException(var, "Expected an variable declaration");
+        return VariableDeclarationNode.createVariableDeclaration(var, variables);
+
     }
 }

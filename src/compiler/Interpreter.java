@@ -1,8 +1,6 @@
 package compiler;
 
-import compiler.interpreter.Environment;
-import compiler.interpreter.ReturnTypeList;
-import compiler.interpreter.TypeFunction;
+import compiler.interpreter.*;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 
@@ -19,7 +17,27 @@ public class Interpreter {
 
         //TODO: Add default functions
 
-        env.insertBuiltIn("print",new TypeFunction(env, null) {
+        env.insertBuiltIn("array", new TypeFunction(env, null) {
+
+            public ReturnTypeList call(Lexeme lexeme, ReturnTypeList arguments) throws RunTimeException {
+
+                if (arguments.size() == 1) {
+
+                    if (arguments.getFirst() instanceof TypeInteger) {
+                        //TODO: negative sizes
+                        return new ReturnTypeList(new TypeArray(((TypeInteger) arguments.getFirst()).value));
+                    } else if (arguments.getFirst() instanceof TypeDouble) {
+                        return new ReturnTypeList(new TypeArray((((TypeDouble) arguments.getFirst()).value).intValue()));
+                    }
+
+                    throw new RunTimeException(lexeme, "Size must be a number");
+                }
+
+                throw new RunTimeException(lexeme, "Incorrect # of arguments -- fix error message later :P");
+            }
+        });
+
+        env.insertBuiltIn("print", new TypeFunction(env, null) {
 
             public ReturnTypeList call(Lexeme lexeme, ReturnTypeList arguments) throws RunTimeException {
                 if (arguments.size() == 1) {
@@ -30,18 +48,22 @@ public class Interpreter {
                 throw new RunTimeException(lexeme, "Incorrect # of arguments -- fix error message later :P");
             }
         });
+
+        env.insertBuiltIn("null", TypeNull.getInstance());
     }
 
     public void begin() throws RunTimeException{
-        System.out.println(treeRoot.eval(env));
+        ReturnTypeList result = treeRoot.eval(env);
+        System.out.println(result);
     }
 
     public static void main(String args[]){
 
         try {
-            Lexer lexer = new Lexer(new File("test.txt"));
+            Lexer lexer = new Lexer(new File(args[0]));
             Parser parser = new Parser(lexer);
             Node tree = parser.parse();
+            //System.out.println(tree);
 
             Interpreter interpreter = new Interpreter(tree);
             interpreter.begin();

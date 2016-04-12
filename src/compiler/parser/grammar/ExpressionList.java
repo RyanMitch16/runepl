@@ -31,22 +31,15 @@ public class ExpressionList {
      */
     public static NodeList match(Parser parser) throws BuildException {
 
-        if (Expression.pending(parser)) {
-            Lexeme pos = parser.getCurrentLexeme();
-            Node head = Expression.match(parser);
+        Lexeme pos = parser.getCurrentLexeme();
+        Node head = Expression.match(parser);
 
-            if (parser.check(LexemeType.COMMA)) {
-                Lexeme comma = parser.advance();
-
-                if (ExpressionList.pending(parser)) {
-                    return ExpressionListNode.createExpressionList(comma, head, ExpressionList.match(parser));
-                }
-                throw new BuildException(comma, "Expected an expression or list of expressions");
-            }
-
-            return ExpressionListNode.createExpressionList(pos, head);
+        if (parser.check(LexemeType.COMMA)) {
+            Lexeme comma = parser.advance();
+            return ExpressionListNode.createExpressionList(comma, head, ExpressionList.match(parser));
         }
 
-        throw new BuildException(parser.getCurrentLexeme(), "Expected an expression or list of expressions");
+        return ExpressionListNode.createExpressionList(pos, head);
+
     }
 }

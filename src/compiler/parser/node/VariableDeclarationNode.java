@@ -39,6 +39,8 @@ public class VariableDeclarationNode extends Node{
 
         env.insert(identifiers, expressions);
 
+        //System.out.println(">>"+children[0]);
+
         return null;
     }
 }

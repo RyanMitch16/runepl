@@ -1,0 +1,28 @@
+
+var Cons = (func(car, cdr): return this)
+
+var Stack = func(): (
+
+    var head = null
+
+    var push = (func(val): head = Cons(val, head))
+
+    var pop = func(): (
+        if (head != null):
+            var val = head.car
+            head = head.cdr
+            return val
+        return null
+    )
+    return this
+)
+
+var stack = Stack()
+stack.push(5)
+stack.push(10)
+stack.push(15)
+
+print(stack.pop())
+print(stack.pop())
+print(stack.pop())
+print(stack.pop())

@@ -48,16 +48,14 @@ public class StatementList {
             return StatementListNode.createStatementList(pos, head);
         }
 
-        if (ControlStatement.pending(parser)) {
-            Node head = ControlStatement.match(parser);
 
-            if (StatementList.pending(parser)) {
-                return StatementListNode.createStatementList(pos, head, StatementList.match(parser));
-            }
+        Node head = ControlStatement.match(parser);
 
-            return StatementListNode.createStatementList(pos, head);
+        if (StatementList.pending(parser)) {
+            return StatementListNode.createStatementList(pos, head, StatementList.match(parser));
         }
 
-        throw new BuildException(parser.getCurrentLexeme(), "Expected a statement or multiple statements");
+        return StatementListNode.createStatementList(pos, head);
+
     }
 }

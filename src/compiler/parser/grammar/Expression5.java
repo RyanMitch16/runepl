@@ -31,31 +31,22 @@ public class Expression5 {
      */
     public static Node match(Parser parser) throws BuildException {
 
-        if (Expression4.pending(parser)) {
+        Node head = Expression4.match(parser);
 
-            Node head = Expression4.match(parser);
+        while (parser.check(LexemeType.PLUS, LexemeType.MINUS)) {
+            Lexeme op = parser.advance();
 
-            while (parser.check(LexemeType.PLUS, LexemeType.MINUS)) {
-                Lexeme op = parser.advance();
-
-                if (Expression4.pending(parser)) {
-                    Node right = Expression4.match(parser);
-
-                    //Set the head to a new node to create left associativity
-                    if (op.type == LexemeType.PLUS) {
-                        head = OperatorBinaryNode.createOperationAddition(op, head, right);
-                    } else {
-                        head = OperatorBinaryNode.createOperationSubtraction(op, head, right);
-                    }
-                } else {
-                    throw new BuildException(op, "Expected an expression");
-                }
+            //Set the head to a new node to create left associativity
+            if (op.type == LexemeType.PLUS) {
+                head = OperatorBinaryNode.createOperationAddition(op, head, Expression4.match(parser));
+            } else {
+                head = OperatorBinaryNode.createOperationSubtraction(op, head, Expression4.match(parser));
             }
 
-            return head;
         }
 
-        throw new BuildException(parser.getCurrentLexeme(), "Expected an expression");
+        return head;
+
     }
 
 }

@@ -1,0 +1,27 @@
+
+
+var a = [27, 49, 50 , 38, 99, 11, 0, 6]
+
+print(a[5])
+
+var insertionSort = func(arr): (
+    var j = 0
+
+    var b = 10
+
+    while (j < arr.length):
+        var i = 0
+        while (i < arr.length-1-j):
+            if (arr[i] > arr[i+1]):
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+            i += 1
+        j += 1
+
+    return a
+)
+
+print(insertionSort(a))
+
+
+var newArray = array(10)
+print(newArray)

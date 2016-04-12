@@ -41,9 +41,7 @@ public class Expression3 {
             return OperatorUnaryNode.createOperationInversion(op, expression);
         }
 
-        if (Expression2.pending(parser)) {
-            return Expression2.match(parser);
-        }
-        throw new BuildException(parser.getCurrentLexeme(), "Expected an expression");
+        return Expression2.match(parser);
+
     }
 }

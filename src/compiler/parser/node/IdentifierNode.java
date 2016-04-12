@@ -2,6 +2,7 @@ package compiler.parser.node;
 
 import compiler.RunTimeException;
 import compiler.interpreter.Environment;
+import compiler.interpreter.ReturnType;
 import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
@@ -26,7 +27,12 @@ public class IdentifierNode extends Node {
         return lexeme;
     }
 
+    public void set(Environment env, NodeType type, ReturnType value) throws RunTimeException{
+        env.update(lexeme, type, value);
+    }
+
     public ReturnTypeList eval(Environment env) throws RunTimeException {
         return new ReturnTypeList(env.lookUp(lexeme));
     }
+
 }

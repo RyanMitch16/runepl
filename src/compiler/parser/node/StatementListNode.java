@@ -2,7 +2,6 @@ package compiler.parser.node;
 
 import compiler.RunTimeException;
 import compiler.interpreter.Environment;
-import compiler.interpreter.ReturnType;
 import compiler.interpreter.ReturnTypeList;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
@@ -30,8 +29,12 @@ public class StatementListNode extends NodeList {
     public ReturnTypeList eval(Environment env) throws RunTimeException{
 
         ReturnTypeList value = children[0].eval(env);
-        if (value != null && (children[0] instanceof ReturnNode || children[0] instanceof IfStatementNode))
+        if (value != null && (children[0] instanceof ReturnNode || children[0] instanceof IfStatementNode
+                || children[0] instanceof WhileStatementNode)) {
+
             return value;
+
+        }
 
         if (children.length == 2) {
             value = children[1].eval(env);
@@ -39,6 +42,6 @@ public class StatementListNode extends NodeList {
                 return value;
         }
 
-        return new ReturnTypeList();
+        return null;
     }
 }

@@ -1,8 +1,10 @@
 package compiler.parser.node;
 
+import compiler.RunTimeException;
 import compiler.interpreter.*;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
+import compiler.parser.NodeList;
 import compiler.parser.NodeType;
 
 public class LiteralNode extends Node{
@@ -43,8 +45,17 @@ public class LiteralNode extends Node{
         return node;
     }
 
-    public ReturnTypeList eval(Environment env) {
+    public static LiteralNode createLiteralArray(Lexeme lexeme, NodeList array){
+        LiteralNode node = new LiteralNode(NodeType.LiteralArray, lexeme, array);
+        return node;
+    }
+
+    public ReturnTypeList eval(Environment env) throws RunTimeException{
+        if (type == NodeType.LiteralArray) {
+            return new ReturnTypeList(new TypeArray(children[0].eval(env)));
+        }
         return new ReturnTypeList(value);
     }
+
 
 }

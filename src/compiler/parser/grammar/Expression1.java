@@ -12,6 +12,7 @@ import compiler.parser.node.LiteralNode;
  *             | PAREN_LEFT AnonFunctionDeclaration PAREN_RIGHT
  *             | TRUE
  *             | FALSE
+ *             | LITERAL_ARRAY
  *             | LITERAL_INTEGER
  *             | LITERAL_STRING
  *             | LITERAL_DECIMAL
@@ -27,7 +28,7 @@ public class Expression1 {
     public static boolean pending(Parser parser){
         return parser.check(LexemeType.TRUE, LexemeType.FALSE, LexemeType.PAREN_LEFT,
                 LexemeType.LITERAL_INTEGER, LexemeType.LITERAL_STRING,
-                LexemeType.LITERAL_DECIMAL, LexemeType.IDENTIFIER);
+                LexemeType.LITERAL_DECIMAL, LexemeType.IDENTIFIER ) || LiteralArray.pending(parser);
     }
 
     /**
@@ -52,6 +53,10 @@ public class Expression1 {
 
         if (parser.check(LexemeType.TRUE) || parser.check(LexemeType.FALSE)){
             return LiteralNode.createLiteralBoolean(parser.advance());
+        }
+
+        if (LiteralArray.pending(parser)){
+            return LiteralArray.match(parser);
         }
 
         if (parser.check(LexemeType.LITERAL_DECIMAL)){

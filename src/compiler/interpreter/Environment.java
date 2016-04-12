@@ -2,6 +2,7 @@ package compiler.interpreter;
 
 import compiler.RunTimeException;
 import compiler.lexer.Lexeme;
+import compiler.parser.NodeType;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
@@ -47,7 +48,7 @@ public class Environment {
             if (expressionIterator.hasNext()) {
                 insert(identifier, expressionIterator.next());
             } else {
-                insert(identifier, null);
+                insert(identifier, TypeNull.getInstance());
             }
         }
     }
@@ -82,6 +83,8 @@ public class Environment {
      * @param value the list of values of the variables
      */
     public void insert(Lexeme variable, ReturnType value){
+
+        //TODO:Check if already declared
         variables.push(variable.text);
         values.push(value);
     }
@@ -107,7 +110,7 @@ public class Environment {
             if (expressionIterator.hasNext()) {
                 insert(identifier, expressionIterator.next());
             } else {
-                insert(identifier, null);
+                insert(identifier, TypeNull.getInstance());
             }
         }
     }
@@ -143,7 +146,7 @@ public class Environment {
      * @param variable the variable name to look up
      * @param value the value to set the variable to
      */
-    public void update(Lexeme variable, ReturnType value) throws RunTimeException{
+    public ReturnType update(Lexeme variable, NodeType assignOp, ReturnType value) throws RunTimeException{
 
         Environment env = this;
         while (env != null) {
@@ -152,10 +155,28 @@ public class Environment {
 
             while (valIt.hasNext()) {
                 String var = varIt.next();
-                valIt.next();
+                ReturnType currentVal = valIt.next();
                 if (var.equals(variable.text)) {
-                    valIt.set(value);
-                    return;
+                    switch (assignOp) {
+                        case Assignment:
+                            valIt.set(value);
+                            return value;
+                        case AssignmentAddition:
+                            valIt.set(currentVal.plus(variable, value));
+                            return value;
+                        case AssignmentSubtraction:
+                            valIt.set(currentVal.minus(variable, value));
+                            return value;
+                        case AssignmentMultiplication:
+                            valIt.set(currentVal.times(variable, value));
+                            return value;
+                        case AssignmentDivision:
+                            valIt.set(currentVal.divides(variable, value));
+                            return value;
+                        case AssignmentModulus:
+                            valIt.set(currentVal.modulus(variable, value));
+                            return value;
+                    }
                 }
             }
 

@@ -1,0 +1,19 @@
+
+var sqrt = func(x):(
+
+    var recurse = func(left, right):(
+        var middle = left + (right-left)/2.0
+        if (middle == left):
+            return middle
+        if (middle*middle > x):
+            return recurse(left,middle)
+        return recurse(middle,right)
+    )
+
+    return recurse(0.0,x*1.0)
+)
+
+print("Square root of 4 is "+sqrt(4))
+print("Square root of 40 is "+sqrt(40))
+print("Square root of 100 is "+sqrt(100))
+print("Square root of 17361 is "+sqrt(17361))

@@ -10,38 +10,53 @@ import java.util.LinkedList;
 public class TypeFunction extends ReturnType {
 
     //The environment the function was declared in
-    public Environment declarationEnv;
+    public Environment closureEnv;
 
     //The node which holds the parameters and body of the function
     public AnonFunctionNode node;
 
     /**
      * Instantiate a function object.
-     * @param declarationEnv environment the function was declared in
+     * @param closureEnv environment the function was declared in
      * @param node the node which holds the parameters and body of the function
      */
-    public TypeFunction(Environment declarationEnv, AnonFunctionNode node){
-        this.declarationEnv = declarationEnv;
+    public TypeFunction(Environment closureEnv, AnonFunctionNode node){
+        super(new Environment());
+        this.closureEnv = closureEnv;
         this.node = node;
     }
 
     /**
      * Call the function with the provided arguments.
-     * @param lexeme the function call lexeme to be used when displaying an error
+     * @param pt the function call lexeme to be used when displaying an error
      * @param arguments the arguments passed to the function call
      * @return the value of the function
      * @throws RunTimeException
      */
-    public ReturnTypeList call(Lexeme lexeme, ReturnTypeList arguments) throws RunTimeException{
+    public ReturnTypeList call(Lexeme pt, ReturnTypeList arguments) throws RunTimeException{
 
         //Get the function parameters
         LinkedList<Lexeme> parameters = node.getParameters();
         if (parameters.size() != arguments.size())
-            throw new RunTimeException(lexeme,"Parameter count ("+parameters.size()+") does not equal " +
+            throw new RunTimeException(pt,"Parameter count ("+parameters.size()+") does not equal " +
                     "argument count ("+arguments.size()+")");
 
-        Environment newExecutionEnv = declarationEnv.extend(parameters, arguments);
+        Environment newExecutionEnv = closureEnv.extend(parameters, arguments);
         return  node.getBody().eval(newExecutionEnv);
+    }
+
+    @Override
+    public ReturnType equalEquals(Lexeme op, ReturnType right) throws RunTimeException {
+        if (right instanceof TypeNull)
+            return new TypeBoolean(false);
+        throw invalidOperationException(op, right);
+    }
+
+    @Override
+    public ReturnType notEquals(Lexeme op, ReturnType right) throws RunTimeException {
+        if (right instanceof TypeNull)
+            return new TypeBoolean(true);
+        throw invalidOperationException(op,right);
     }
 
     /**

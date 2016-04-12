@@ -12,6 +12,7 @@ public class TypeString extends ReturnType{
      * @param value the value of the double read from the lexer
      */
     public TypeString(String value){
+        super(new Environment());
         this.value = value;
     }
 
@@ -25,6 +26,8 @@ public class TypeString extends ReturnType{
     public TypeBoolean equalEquals(Lexeme op, ReturnType right) throws RunTimeException {
         if (right instanceof TypeString)
             return new TypeBoolean(value.equals(((TypeString) right).value));
+        if (right instanceof TypeNull)
+            return new TypeBoolean(false);
         throw invalidOperationException(op);
     }
 
@@ -38,6 +41,8 @@ public class TypeString extends ReturnType{
     public TypeBoolean notEquals(Lexeme op, ReturnType right) throws RunTimeException {
         if (right instanceof TypeString)
             return new TypeBoolean(!value.equals(((TypeString) right).value));
+        if (right instanceof TypeNull)
+            return new TypeBoolean(true);
         throw invalidOperationException(op);
     }
 

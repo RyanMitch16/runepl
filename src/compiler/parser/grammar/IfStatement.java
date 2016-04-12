@@ -12,6 +12,7 @@ import compiler.parser.node.StatementListNode;
 /**
  * IfStatement : IF Expression COLON Statement
  *             | IF Expression COLON LINE_NEW TAB_INC StatementList LINE_NEW TAB_DEC OptElseIfStatement
+ *             |
  */
 public class IfStatement {
 
@@ -43,17 +44,28 @@ public class IfStatement {
             NodeList statements = StatementList.match(parser);
             parser.match(LexemeType.TAB_DEC);
 
-            //TODO: Check for else statements
+            if (parser.check(LexemeType.ELSE)) {
+                parser.advance();
+
+                if (IfStatement.pending(parser)) {
+                    return IfStatementNode.createIfStatement(iff, expression, statements, IfStatement.match(parser));
+                } else {
+
+                    parser.match(LexemeType.COLON);
+                    parser.match(LexemeType.LINE_NEW);
+                    parser.match(LexemeType.TAB_INC);
+
+                    NodeList elseStatements = StatementList.match(parser);
+                    parser.match(LexemeType.TAB_DEC);
+
+                    return IfStatementNode.createIfStatement(iff, expression, statements, elseStatements);
+                }
+            }
 
             return IfStatementNode.createIfStatement(iff, expression, statements);
         }
 
-        if (Statement.pending(parser)) {
-            Lexeme lexeme = parser.getCurrentLexeme();
-            NodeList body =  StatementListNode.createStatementList(lexeme, Statement.match(parser));
-            return IfStatementNode.createIfStatement(iff, expression, body);
-        }
-
-        throw new BuildException(parser.getCurrentLexeme(), "Expected an if statement");
+        NodeList body =  StatementListNode.createStatementList(parser.getCurrentLexeme(), Statement.match(parser));
+        return IfStatementNode.createIfStatement(iff, expression, body);
     }
 }

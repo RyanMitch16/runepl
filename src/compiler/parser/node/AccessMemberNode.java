@@ -6,6 +6,7 @@ import compiler.interpreter.ReturnType;
 import compiler.interpreter.ReturnTypeList;
 import compiler.interpreter.TypeObject;
 import compiler.lexer.Lexeme;
+import compiler.lexer.LexemeType;
 import compiler.parser.Node;
 import compiler.parser.NodeType;
 
@@ -32,6 +33,22 @@ public class AccessMemberNode extends Node {
         return new AccessMemberNode(NodeType.AccessMember, dot, expression, member);
     }
 
+    public void set(Environment env, NodeType type, ReturnType value) throws RunTimeException{
+
+
+        ReturnTypeList expressionValue = children[0].eval(env);
+
+        if (expressionValue.size() == 0) {
+            throw new RunTimeException(lexeme, "Unable to set a member of a null reference");
+        }
+
+        if (expressionValue.size() > 1) {
+            throw new RunTimeException(lexeme, "Unable to set a member of multiple reference");
+        }
+
+        expressionValue.getFirst().setMember(children[1].lexeme, type, value);
+    }
+
     /**
      *
      * @param env
@@ -43,18 +60,14 @@ public class AccessMemberNode extends Node {
         ReturnTypeList expressionValue = children[0].eval(env);
 
         if (expressionValue.size() == 0) {
-            throw new RunTimeException(children[0].lexeme, "Unable to retrieve a member of a null reference");
+            throw new RunTimeException(lexeme, "Unable to retrieve a member of a null reference");
         }
 
         if (expressionValue.size() > 1) {
-            throw new RunTimeException(children[0].lexeme, "Unable to retrieve a member of multiple reference");
+            throw new RunTimeException(lexeme, "Unable to retrieve a member of multiple reference");
         }
 
-        if (!(expressionValue.getFirst() instanceof TypeObject))
-            throw new RunTimeException(children[0].lexeme, "Unable to retrieve a member a non object reference");
-
-
-        return new ReturnTypeList(((TypeObject) expressionValue.getFirst()).getEnv().lookUp(
+        return new ReturnTypeList(expressionValue.getFirst().getMember(
                 ((IdentifierNode) children[1]).getIdentifierName()));
     }
 }

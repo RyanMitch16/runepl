@@ -2,7 +2,6 @@ package compiler.parser.node;
 
 import compiler.RunTimeException;
 import compiler.interpreter.Environment;
-import compiler.interpreter.ReturnType;
 import compiler.interpreter.ReturnTypeList;
 import compiler.interpreter.TypeBoolean;
 import compiler.lexer.Lexeme;
@@ -25,8 +24,8 @@ public class IfStatementNode extends Node{
         return new IfStatementNode(NodeType.IfStatement, iff, expression, statementList);
     }
 
-    public static IfStatementNode createIfStatement(Lexeme iff, Node expression, Node statement) {
-        return new IfStatementNode(NodeType.IfStatement, iff, expression, statement);
+    public static IfStatementNode createIfStatement(Lexeme iff, Node expression, NodeList statementList, Node elseStatement) {
+        return new IfStatementNode(NodeType.IfStatement, iff, expression, statementList, elseStatement);
     }
 
     public ReturnTypeList eval(Environment env) throws RunTimeException {
@@ -37,10 +36,12 @@ public class IfStatementNode extends Node{
             throw new RunTimeException(lexeme, "Evaluation expression not a boolean value");
 
         if (((TypeBoolean) expressionValue.getFirst()).value) {
-
             return children[1].eval(env.extend());
+        } else if (children.length == 3) {
+            return children[2].eval(env.extend());
         }
 
         return null;
     }
+
 }

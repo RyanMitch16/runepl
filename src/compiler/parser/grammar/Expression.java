@@ -33,8 +33,8 @@ public class Expression {
             return AnonFunctionDeclaration.match(parser);
         }
 
-        if  (Expression7.pending(parser)) {
-            return Expression7.match(parser);
+        if  (Expression9.pending(parser)) {
+            return Expression9.match(parser);
         }
         throw new BuildException(parser.getCurrentLexeme(), "Expected an expression");
     }

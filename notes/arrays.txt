@@ -1,0 +1,21 @@
+
+Arrays objects can be created through syntax or through the array function call.
+
+	var a = [1, 2, this, 4, "Hello", 6]
+
+	var b = array(10) //Initialized to a size of 10 filled with nulls
+
+
+Arrays can be accessed using brackets and the first index starts from 0.
+
+	print(a[0]) //prints 1
+	print(a[4]) //prints Hello
+
+	print(b[0]) //prints null because arrays spots are initialized to null
+
+
+Arrays have a length member that gives the size of the array.
+
+	print(a.length) //prints 6
+	print(b.length) //prints 10
+

@@ -1,4 +1,7 @@
 
+var a, b = 10, 11
+a, b = 9, 12
+
 var power = func(x, n):(
 
     var iterator = func(i, product):(
@@ -34,11 +37,16 @@ var nrt = func(x, n):(
         return recurse(middle,right)
     )
 
+    if (x < 0):
+        if(n % 2 == 0):
+            return null, "Unable to do an even root of a negative number"
+        return 0.0-recurse(0.0, x*1.0)
     return recurse(0.0,x*1.0)
-
 )
 
 
-print(nrt(27,3))
+var val, e = nrt(0.0-27,2)
 
-
+if (e != null):
+    return e
+return val

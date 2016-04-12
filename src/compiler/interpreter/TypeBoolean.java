@@ -13,6 +13,7 @@ public class TypeBoolean extends ReturnType{
      * @param value the value of the boolean read from the lexer
      */
     public TypeBoolean(Lexeme value){
+        super(new Environment());
         this.value = (value.type == LexemeType.TRUE);
     }
 
@@ -21,6 +22,7 @@ public class TypeBoolean extends ReturnType{
      * @param value the value of the boolean
      */
     public TypeBoolean(Boolean value){
+        super(new Environment());
         this.value = value;
     }
 
@@ -47,6 +49,8 @@ public class TypeBoolean extends ReturnType{
     public TypeBoolean equalEquals(Lexeme op, ReturnType right) throws RunTimeException {
         if (right instanceof TypeBoolean)
             return new TypeBoolean(((boolean) value) == ((TypeBoolean) right).value);
+        if (right instanceof TypeNull)
+            return new TypeBoolean(false);
         throw invalidOperationException(op, right);
     }
 
@@ -70,6 +74,8 @@ public class TypeBoolean extends ReturnType{
     public TypeBoolean notEquals(Lexeme op, ReturnType right) throws RunTimeException {
         if (right instanceof TypeBoolean)
             return new TypeBoolean(((boolean) value) != ((TypeBoolean) right).value);
+        if (right instanceof TypeNull)
+            return new TypeBoolean(true);
         throw invalidOperationException(op, right);
     }
 

@@ -1,0 +1,13 @@
+
+
+
+
+var b = 11
+if (b == 11):
+	print("YES")
+else if (b == 9):
+	print("NO")
+else:
+	print("OTHER")
+
+print(b)

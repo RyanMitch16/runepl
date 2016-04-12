@@ -2,49 +2,81 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7835727c-8f61-4df8-92de-c1efc59e3b14" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeBoolean.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeNull.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/ControlStatement.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression6.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression7.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/IfStatement.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/WhileStatement.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/node/IfStatementNode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/node/StatementNode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/node/WhileStatementNode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeArray.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression8.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression9.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/LiteralArray.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/parser/node/AssignmentNode.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/StatementNode.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compiler/parser/node/StatementNode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/BuildException.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/BuildException.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/Interpreter$1.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/Interpreter$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/Interpreter.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/Interpreter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/Lexer.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/Lexer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/Parser.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/Parser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/RunTimeException.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/RunTimeException.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/Environment.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/Environment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/ReturnType.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/ReturnType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/ReturnTypeList.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/ReturnTypeList.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeBoolean.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeBoolean.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeDouble.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeDouble.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeFunction.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeFunction.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeInteger.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeInteger.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeNull.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeNull.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeObject.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeObject.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeString.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/interpreter/TypeString.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/lexer/Lexeme.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/lexer/Lexeme.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/lexer/LexemeType.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/lexer/LexemeType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/Node.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/Node.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/NodeList$Iterator.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/NodeList$Iterator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/NodeList.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/NodeList.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/NodeType.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/NodeType.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/AnonFunctionDeclaration.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/AnonFunctionDeclaration.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/ControlStatement.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/ControlStatement.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression1.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression2.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression3.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression4.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression5.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression6.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression7.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Expression7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/ExpressionList.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/ExpressionList.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/IdentifierList.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/IdentifierList.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/IfStatement.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/IfStatement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/OptExpressionList.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/OptExpressionList.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/OptIdentifierList.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/OptIdentifierList.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Statement.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/Statement.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/StatementList.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/StatementList.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/VariableDeclaration.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/VariableDeclaration.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/WhileStatement.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/grammar/WhileStatement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/AccessElementNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/AccessElementNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/AccessMemberNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/AccessMemberNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/AnonFunctionNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/AnonFunctionNode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/ExpressionListNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/ExpressionListNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/FunctionCallNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/FunctionCallNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/IdentifierListNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/IdentifierListNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/IdentifierNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/IdentifierNode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/IfStatementNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/IfStatementNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/LiteralNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/LiteralNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/OperatorBinaryNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/OperatorBinaryNode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/OperatorUnaryNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/OperatorUnaryNode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/ReturnNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/ReturnNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/StatementListNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/StatementListNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/VariableDeclarationNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/VariableDeclarationNode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/WhileStatementNode.class" afterPath="$PROJECT_DIR$/out/production/rune/compiler/parser/node/WhileStatementNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/Interpreter.java" afterPath="$PROJECT_DIR$/src/compiler/Interpreter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/Lexer.java" afterPath="$PROJECT_DIR$/src/compiler/Lexer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/Parser.java" afterPath="$PROJECT_DIR$/src/compiler/Parser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/Environment.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/Environment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/ReturnType.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/ReturnType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeBoolean.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeBoolean.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeDouble.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeDouble.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeFunction.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeFunction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeInteger.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeInteger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeNull.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeNull.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeObject.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeObject.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/interpreter/TypeString.java" afterPath="$PROJECT_DIR$/src/compiler/interpreter/TypeString.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/lexer/LexemeType.java" afterPath="$PROJECT_DIR$/src/compiler/lexer/LexemeType.java" />
@@ -52,18 +84,31 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/AnonFunctionDeclaration.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/AnonFunctionDeclaration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression1.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression2.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression3.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression3.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression4.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression4.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression5.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression5.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression6.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression6.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression7.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Expression7.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/ExpressionList.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/ExpressionList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/IdentifierList.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/IdentifierList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/IfStatement.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/IfStatement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/Statement.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/Statement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/StatementList.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/StatementList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/VariableDeclaration.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/VariableDeclaration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/grammar/WhileStatement.java" afterPath="$PROJECT_DIR$/src/compiler/parser/grammar/WhileStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/AccessElementNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/AccessElementNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/AccessMemberNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/AccessMemberNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/AnonFunctionNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/AnonFunctionNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/FunctionCallNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/FunctionCallNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/IdentifierListNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/IdentifierListNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/IdentifierNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/IdentifierNode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/IfStatementNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/IfStatementNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/LiteralNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/LiteralNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/OperatorBinaryNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/OperatorBinaryNode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/OperatorUnaryNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/OperatorUnaryNode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/ReturnNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/ReturnNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/StatementListNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/StatementListNode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/VariableDeclarationNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/VariableDeclarationNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.txt" afterPath="$PROJECT_DIR$/test.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/parser/node/WhileStatementNode.java" afterPath="$PROJECT_DIR$/src/compiler/parser/node/WhileStatementNode.java" />
     </list>
     <ignored path="rune.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,77 +130,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test.txt">
+      <file leaf-file-name="Interpreter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/compiler/Interpreter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2560748">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControlStatement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/ControlStatement.java">
+      <file leaf-file-name="TypeArray.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeArray.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WhileStatementNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/WhileStatementNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Statement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Statement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Expression7.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression7.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NodeType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/compiler/parser/NodeType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="15" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReturnNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/ReturnNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.5771144">
+              <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -181,57 +170,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression2.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/OptExpressionList.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/OptIdentifierList.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/IdentifierList.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/VariableDeclaration.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/NodeList.java" />
-        <option value="$PROJECT_DIR$/src/compiler/RunTimeException.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeFunctionBuiltIn.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/Node.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/AccessElementNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/ExpressionListNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/OperatorUnaryNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/ReturnNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/ReturnTypeList.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/IdentifierNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/IdentifierListNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/AnonFunctionNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/VariableDeclarationNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/interpreter/Environment.java" />
+        <option value="$PROJECT_DIR$/test.txt" />
+        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeFunction.java" />
         <option value="$PROJECT_DIR$/src/compiler/lexer/LexemeType.java" />
-        <option value="$PROJECT_DIR$/src/compiler/Lexer.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/LiteralNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression1.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/StatementNode.java" />
+        <option value="$PROJECT_DIR$/Makefile" />
+        <option value="$PROJECT_DIR$/run-arrays.txt" />
+        <option value="$PROJECT_DIR$/examples/recursion.txt" />
+        <option value="$PROJECT_DIR$/src/compiler/PrettyPrinter.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression8.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression9.java" />
         <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/IfStatement.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression6.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression3.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression7.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression5.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression4.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression2.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/ExpressionList.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/IdentifierList.java" />
         <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Statement.java" />
         <option value="$PROJECT_DIR$/src/compiler/parser/grammar/StatementList.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/AnonFunctionDeclaration.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeBuiltInFunction.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/FunctionCallNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeNull.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/StatementListNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeBoolean.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeDouble.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeFunction.java" />
-        <option value="$PROJECT_DIR$/src/compiler/Interpreter.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeInteger.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeString.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/ReturnType.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeObject.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/AccessMemberNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/interpreter/Environment.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/OperatorBinaryNode.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression6.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/Expression7.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/VariableDeclaration.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/OptElseStatement.java" />
         <option value="$PROJECT_DIR$/src/compiler/parser/NodeType.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/node/IfStatementNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/ElseStatementNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/ElseStatement.java" />
         <option value="$PROJECT_DIR$/src/compiler/parser/grammar/WhileStatement.java" />
-        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/ControlStatement.java" />
+        <option value="$PROJECT_DIR$/examples/arrays.txt" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/AnonFunctionDeclaration.java" />
+        <option value="$PROJECT_DIR$/src/compiler/Parser.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/grammar/IfStatement.java" />
+        <option value="$PROJECT_DIR$/src/compiler/Lexer.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/AccessElementNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/AccessMemberNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/AnonFunctionNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/AssignmentNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/ExpressionListNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/FunctionCallNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/IdentifierListNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/IdentifierNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/IfStatementNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/LiteralNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/OperatorUnaryNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/OperatorBinaryNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/ReturnNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/StatementListNode.java" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/node/VariableDeclarationNode.java" />
         <option value="$PROJECT_DIR$/src/compiler/parser/node/WhileStatementNode.java" />
-        <option value="$PROJECT_DIR$/test.txt" />
+        <option value="$PROJECT_DIR$/src/compiler/parser/Node.java" />
+        <option value="$PROJECT_DIR$/src/compiler/Interpreter.java" />
+        <option value="$PROJECT_DIR$/src/compiler/interpreter/TypeArray.java" />
       </list>
     </option>
   </component>
@@ -264,8 +253,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -394,7 +381,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lexer" />
+              <option name="myItemId" value="interpreter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -408,21 +395,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="interpreter" />
+              <option name="myItemId" value="examples" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -430,14 +411,16 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FullScreen" value="true" />
     <property name="last_opened_file_path" value="/usr/bin/git" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/ryanmitchell/Desktop/CS403/rune/test2.txt" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="compiler.parser.node" />
       <recent name="compiler.parser.grammar" />
+      <recent name="compiler.parser.node" />
       <recent name="compiler.parser" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/lexer" />
     </key>
   </component>
@@ -794,30 +777,30 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1879518" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32168674" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26180258" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25035766" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1879518" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.119277105" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -831,10 +814,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18554217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26385543" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27753934" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26180258" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -861,7 +844,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added RunTimeExceptions and Returntypes" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -869,149 +854,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/ExpressionList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.798005">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/lexer/Lexeme.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09975062">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/NodeList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8977556">
-          <caret line="49" column="81" selection-start-line="49" selection-start-column="81" selection-end-line="49" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/RunTimeException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.119700745">
-          <caret line="6" column="54" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/BuildException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43890274">
-          <caret line="22" column="70" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/IdentifierListNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/VariableDeclarationNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7038917">
-          <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/IdentifierList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/lexer/LexemeType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45885286">
-          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/LiteralNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66497463">
-          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/StatementNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/VariableDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.16943522">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/StatementList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/IdentifierNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43890274">
-          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/StatementListNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/ReturnTypeList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67830426">
-          <caret line="42" column="7" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rune.iml">
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1019,262 +862,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeNull.java">
+    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09950249">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-0.09975062">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/OperatorUnaryNode.java">
+    <entry file="file://$PROJECT_DIR$/examples/recursion.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41791046">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="e#848#849#0" expanded="false" />
-            <element signature="e#875#876#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.19950125">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeInteger.java">
+    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/ReturnType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7960199">
-          <caret line="199" column="34" selection-start-line="199" selection-start-column="34" selection-end-line="199" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeBoolean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27838257">
-          <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
+        <state vertical-scroll-proportion="-0.43890274">
+          <caret line="27" column="79" selection-start-line="27" selection-start-column="79" selection-end-line="27" selection-end-column="79" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeString.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2037325">
-          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.019950125">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeFunction.java">
+    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeBoolean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0948678">
-          <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeDouble.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="49" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/Interpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/ReturnType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13445379">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding>
-            <element signature="e#369#370#0" expanded="true" />
-            <element signature="e#396#397#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#458#459#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/Environment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="52" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/AnonFunctionDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8779661">
-          <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/AccessElementNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/AccessMemberNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.050847456">
-          <caret line="30" column="99" selection-start-line="30" selection-start-column="99" selection-end-line="30" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/AnonFunctionNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59322035">
-          <caret line="37" column="69" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/ExpressionListNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6762712">
-          <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3906542">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression6.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.29925188">
+          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.10654206">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.5785536">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/IfStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26915887">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.029906543">
-          <caret line="95" column="47" selection-start-line="95" selection-start-column="47" selection-end-line="95" selection-end-column="47" />
+        <state vertical-scroll-proportion="-0.33665836">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/ReturnNode.java">
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.72069824">
+          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/IfStatementNode.java">
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53831774">
-          <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.75810474">
+          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/OperatorBinaryNode.java">
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression4.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.123364486">
-          <caret line="61" column="58" selection-start-line="61" selection-start-column="58" selection-end-line="61" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.6009975">
+          <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/FunctionCallNode.java">
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression5.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8635514">
-          <caret line="45" column="59" selection-start-line="45" selection-start-column="59" selection-end-line="45" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.6009975">
+          <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/ControlStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression6.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/Lexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.91028035">
-          <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/WhileStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.072897196">
-          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/WhileStatementNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/parser/NodeType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="15" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.99750626">
+          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -1282,27 +959,304 @@
     <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression7.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+          <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression8.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.638404">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/ExpressionList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5785536">
+          <caret line="37" column="28" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/IdentifierList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37905237">
+          <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/LiteralArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6009975">
+          <caret line="80" column="29" selection-start-line="80" selection-start-column="22" selection-end-line="80" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/OptIdentifierList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.159601">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Statement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.521197">
+          <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.txt">
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/VariableDeclaration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2560748">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.59850377">
+          <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/Expression9.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="12" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/OptExpressionList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/NodeType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.319202">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/ControlStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/arrays.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/WhileStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/StatementList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72069824">
+          <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/Parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="46" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/IfStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5411471">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/grammar/AnonFunctionDeclaration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38154614">
+          <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/Lexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="48" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/AccessElementNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/AccessMemberNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/AnonFunctionNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/AssignmentNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/ExpressionListNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/FunctionCallNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/IdentifierListNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/IdentifierNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/IfStatementNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/LiteralNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/OperatorUnaryNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/OperatorBinaryNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="131" column="5" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/ReturnNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/StatementListNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/VariableDeclarationNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6169154">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/node/WhileStatementNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7562189">
+          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/parser/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78731346">
+          <caret line="119" column="5" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/Interpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/interpreter/TypeArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5771144">
+          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
           <folding />
         </state>
       </provider>
