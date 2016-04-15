@@ -33,7 +33,7 @@ public class LiteralNode extends Node{
         return node;
     }
 
-    public static LiteralNode createLiteralString(Lexeme lexeme){
+    public static LiteralNode createLiteralString(Lexeme lexeme) {
         LiteralNode node = new LiteralNode(NodeType.LiteralString, lexeme);
         node.value = new TypeString(lexeme.text);
         return node;

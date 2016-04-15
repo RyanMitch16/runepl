@@ -1,0 +1,36 @@
+
+var a = 10
+var b = 20
+
+/**
+	Show iteration.
+*/
+while (a < 50):
+    if (b % 5 == 0):
+        println("---")
+    println(a)
+    a += 1
+    b += 1
+
+
+/**
+	Demonstrate breaking out of a while loop.
+*/
+var f = func():(
+
+	var a = 10
+	var b = 20
+	
+	while (a < 50):
+	    if (b % 5 == 0):
+	        println("---")
+	    println(a)
+
+	    if (a == 30):
+	    	return "DONE"
+
+	    a += 1
+	    b += 1
+)
+
+println(f())

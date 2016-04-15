@@ -54,7 +54,6 @@ public class AnonFunctionDeclaration {
 
         }
 
-
         Lexeme lexeme = parser.getCurrentLexeme();
         Node body = StatementListNode.createStatementList(lexeme, Statement.match(parser));
         if (parameters == null) {

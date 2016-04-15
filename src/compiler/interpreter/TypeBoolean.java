@@ -6,6 +6,7 @@ import compiler.lexer.LexemeType;
 
 public class TypeBoolean extends ReturnType{
 
+    //The internal value of the boolean
     public final Boolean value;
 
     /**
@@ -24,6 +25,19 @@ public class TypeBoolean extends ReturnType{
     public TypeBoolean(Boolean value){
         super(new Environment());
         this.value = value;
+    }
+
+    /**
+     * Add the two values together.
+     * @param op the operator lexeme
+     * @param right the right operand of the operation
+     * @return the sum of the two numbers or the concatenation of a string is the right operand
+     * @throws RunTimeException
+     */
+    public ReturnType plus(Lexeme op, ReturnType right) throws RunTimeException{
+        if (right instanceof TypeString)
+            return new TypeString(value + ((TypeString) right).value);
+        throw invalidOperationException(op,right);
     }
 
     /**
@@ -92,6 +106,10 @@ public class TypeBoolean extends ReturnType{
         throw invalidOperationException(op, right);
     }
 
+    /**
+     * Return a string representation of the boolean.
+     * @return the string representation
+     */
     public String toString() {
         return value.toString();
     }

@@ -34,10 +34,12 @@ public class Environment {
      * @param variables the list of variables to add to the environment
      * @param values the list of values of the variables
      */
-    public Environment(LinkedList<Lexeme> variables, ReturnTypeList values){
+    public Environment(LinkedList<Lexeme> variables, ReturnTypeList values) throws RunTimeException{
 
         this.variables = new LinkedList<>();
         this.values = new LinkedList<>();
+
+        //Insert a this variable to point to an object that holds this environment
         insertBuiltIn("this", new TypeObject(this));
 
         ListIterator<Lexeme> identifierIterator = variables.listIterator();
@@ -71,7 +73,7 @@ public class Environment {
      * @param values the list of values of the variables
      * @return the sub-environment
      */
-    public Environment extend(LinkedList<Lexeme> variables, ReturnTypeList values){
+    public Environment extend(LinkedList<Lexeme> variables, ReturnTypeList values) throws RunTimeException{
         Environment e = new Environment(variables, values);
         e.parentEnvironment = this;
         return e;
@@ -82,9 +84,17 @@ public class Environment {
      * @param variable the list of variables to add to the environment
      * @param value the list of values of the variables
      */
-    public void insert(Lexeme variable, ReturnType value){
+    public void insert(Lexeme variable, ReturnType value) throws RunTimeException{
 
-        //TODO:Check if already declared
+        ListIterator<String> varIt = variables.listIterator();
+
+        while (varIt.hasNext()) {
+            String var = varIt.next();
+            if (var.equals(variable.text)) {
+                throw new RunTimeException(variable, "Variable "+variable.text+" has bee previously declared in the same scope");
+            }
+        }
+
         variables.push(variable.text);
         values.push(value);
     }
@@ -101,7 +111,7 @@ public class Environment {
      * @param variables the list of variables to add to the environment
      * @param values the list of values of the variables
      */
-    public void insert(LinkedList<Lexeme> variables, ReturnTypeList values){
+    public void insert(LinkedList<Lexeme> variables, ReturnTypeList values) throws RunTimeException{
         ListIterator<Lexeme> identifierIterator = variables.listIterator();
         ListIterator<ReturnType> expressionIterator = values.listIterator();
 

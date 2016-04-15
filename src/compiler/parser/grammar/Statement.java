@@ -80,7 +80,7 @@ public class Statement {
         if (expression instanceof ExpressionListNode ||expression instanceof IdentifierNode ||
                 expression instanceof AccessMemberNode || expression instanceof AccessElementNode) {
             for (Node child : expression.children) {
-                if (!(expression instanceof AccessElementNode) && !checkOnlyIdentifiers(child))
+                if (!(expression instanceof AccessElementNode) &&  !(expression instanceof AccessMemberNode) && !checkOnlyIdentifiers(child))
                     return false;
             }
             return true;

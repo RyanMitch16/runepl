@@ -615,10 +615,11 @@ public class Lexer {
      */
     public Lexeme lex() throws BuildException{
 
+
         try {
             //Read in characters until the end of the file has been reached
             char c;
-            while (!reachedEOF()) {
+            while (!reachedEOF() || lineTabsToBeReturned < 0) {
 
                 //Return a dot (period, full stop) if the integer return previously did not have a decimal place when checked
                 if (returnDot) {
@@ -637,14 +638,12 @@ public class Lexer {
                 //Return tab increase lexemes if the tab count increased this line
                 if (lineTabsToBeReturned > 0) {
                     lineTabsToBeReturned -= 1;
-                    lastWasNewLine = false;
                     return new Lexeme(LexemeType.TAB_INC, currentLine, 0);
                 }
 
                 //Return tab decrease lexemes if the tab count decreased this line
                 if (lineTabsToBeReturned < 0) {
                     lineTabsToBeReturned += 1;
-                    lastWasNewLine = false;
                     return new Lexeme(LexemeType.TAB_DEC, currentLine, 0);
                 }
 
@@ -709,7 +708,7 @@ public class Lexer {
                 }
 
                 //Attempt to lex an identifier
-                else if (isLetter(c)) {
+                else if (isLetter(c) || c == '_') {
                     lastWasNewLine = false;
                     return lexIdentifier();
                 }
@@ -727,6 +726,11 @@ public class Lexer {
             }
         } catch (IOException e) {
             System.out.println("IOE");
+        }
+
+        if (lineTabCurrent > 0) {
+            lineTabCurrent -= 1;
+            return new Lexeme(LexemeType.TAB_DEC, currentLine+1, 0);
         }
 
         return new Lexeme(LexemeType.EOF, currentLine, currentPosition);

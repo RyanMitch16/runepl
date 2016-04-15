@@ -1,0 +1,9 @@
+
+var a = 100
+var b = func(x):(
+
+	//Missing tab increase in the while loop
+	while (a < 200):
+	print(a)
+	a += 1
+)

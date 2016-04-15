@@ -43,6 +43,12 @@ public class FunctionCallNode extends Node {
             throw new RunTimeException(children[0].lexeme, "Unable to call function on a non-function reference");
 
         ReturnTypeList arguments = (children.length == 1)? new ReturnTypeList() : children[1].eval(env);
-        return ((TypeFunction) functionObject).call(lexeme,arguments);
+
+        ReturnTypeList value = ((TypeFunction) functionObject).call(lexeme,arguments);
+        if (value != null) {
+            return value;
+        }
+        return new ReturnTypeList();
+
     }
 }

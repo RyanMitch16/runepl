@@ -3,6 +3,7 @@ package compiler.parser.node;
 import compiler.RunTimeException;
 import compiler.interpreter.Environment;
 import compiler.interpreter.ReturnTypeList;
+import compiler.interpreter.TypeBoolean;
 import compiler.lexer.Lexeme;
 import compiler.parser.Node;
 import compiler.parser.NodeType;
@@ -82,6 +83,28 @@ public class OperatorBinaryNode extends Node {
         if (leftValueExpressions.size() > 1)
             throw new RunTimeException(lexeme,"Unable to "+lexeme+" with a multiple left operands");
 
+        //Allow for short circuiting
+        if (type == NodeType.OperationAnd) {
+            if (!(leftValueExpressions.getFirst() instanceof TypeBoolean)) {
+                throw new RunTimeException(lexeme, "Unable to and with a non boolean");
+            }
+
+            //Evaluate the and to false if the first expression is
+            if (!((TypeBoolean) leftValueExpressions.getFirst()).value) {
+                return new ReturnTypeList(new TypeBoolean(false));
+            }
+        }
+        if (type == NodeType.OperationOr) {
+            if (!(leftValueExpressions.getFirst() instanceof TypeBoolean)) {
+                throw new RunTimeException(lexeme, "Unable to and with a non boolean");
+            }
+
+            //Evaluate the and to false if the first expression is
+            if (((TypeBoolean) leftValueExpressions.getFirst()).value) {
+                return new ReturnTypeList(new TypeBoolean(true));
+            }
+        }
+
         ReturnTypeList rightValueExpressions = children[1].eval(env);
         if (rightValueExpressions.size() == 0)
             throw new RunTimeException(lexeme,"Unable to "+lexeme+" with a right left operand");
@@ -93,7 +116,7 @@ public class OperatorBinaryNode extends Node {
             return new ReturnTypeList(leftValueExpressions.getFirst().plus(lexeme, rightValueExpressions.getFirst()));
 
         if (type == NodeType.OperationAnd)
-                return new ReturnTypeList(leftValueExpressions.getFirst().and(lexeme, rightValueExpressions.getFirst()));
+            return new ReturnTypeList(leftValueExpressions.getFirst().and(lexeme, rightValueExpressions.getFirst()));
 
         if (type == NodeType.OperationDivision)
             return new ReturnTypeList(leftValueExpressions.getFirst().divides(lexeme, rightValueExpressions.getFirst()));

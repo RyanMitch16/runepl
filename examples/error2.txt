@@ -1,0 +1,6 @@
+
+
+//Missing parentheseis encloding the function like brackets would
+var myFuncName = func(x):
+	var a = 0
+	return x

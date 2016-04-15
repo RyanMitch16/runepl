@@ -1,0 +1,8 @@
+
+
+//Cannot have an empty function body
+var apple = 0.19234
+var f = func(x):(
+
+)
+

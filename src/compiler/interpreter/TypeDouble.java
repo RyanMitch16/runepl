@@ -5,6 +5,7 @@ import compiler.lexer.Lexeme;
 
 public class TypeDouble extends ReturnType {
 
+    //The internal representation of the double
     public final Double value;
 
     /**
@@ -206,7 +207,10 @@ public class TypeDouble extends ReturnType {
         throw invalidOperationException(op,right);
     }
 
-
+    /**
+     * Return a string representation of the double.
+     * @return the string representation
+     */
     public String toString() {
         return value.toString();
     }

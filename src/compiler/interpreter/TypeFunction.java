@@ -1,6 +1,5 @@
 package compiler.interpreter;
 
-
 import compiler.RunTimeException;
 import compiler.lexer.Lexeme;
 import compiler.parser.node.AnonFunctionNode;
@@ -42,20 +41,36 @@ public class TypeFunction extends ReturnType {
                     "argument count ("+arguments.size()+")");
 
         Environment newExecutionEnv = closureEnv.extend(parameters, arguments);
-        return  node.getBody().eval(newExecutionEnv);
+        return node.getBody().eval(newExecutionEnv);
     }
 
-    @Override
+    /**
+     * Check if the values are equal (pointer equality for now)
+     * @param op the operator lexeme
+     * @param right the value to check equality to
+     * @return whether the objects are equal or not
+     * @throws RunTimeException
+     */
     public ReturnType equalEquals(Lexeme op, ReturnType right) throws RunTimeException {
         if (right instanceof TypeNull)
             return new TypeBoolean(false);
+        if (right instanceof TypeFunction)
+            return new TypeBoolean(this.equals(right));
         throw invalidOperationException(op, right);
     }
 
-    @Override
+    /**
+     * Check if the values are not equal (pointer equality for now)
+     * @param op the operator lexeme
+     * @param right the value to check equality to
+     * @return whether the objects are not equal or not
+     * @throws RunTimeException
+     */
     public ReturnType notEquals(Lexeme op, ReturnType right) throws RunTimeException {
         if (right instanceof TypeNull)
             return new TypeBoolean(true);
+        if (right instanceof TypeFunction)
+            return new TypeBoolean(!this.equals(right));
         throw invalidOperationException(op,right);
     }
 

@@ -1,0 +1,51 @@
+
+
+/**
+    Show that functions retain their calling definition enviornment.
+    Show functions can return functions.
+*/
+var curryAddition = func(x):(
+    return func(y):(
+        return x + y
+    )
+)
+
+var a = 5
+var b = curryAddition(5) //Functions can be stored in variables
+println(b)
+
+var c = b(6)
+println(c +" should equal 11")
+
+
+/**
+    Show creating objects by returning the enviornment.
+*/
+println("")
+var Cons = (func(car, cdr): return this)
+
+var Stack = func(): (
+
+    var head = null
+
+    var push = (func(val): head = Cons(val, head))
+
+    var pop = func(): (
+        if (head != null):
+            var val = head.car
+            head = head.cdr
+            return val
+        return null
+    )
+    return this
+)
+
+var stack = Stack()
+stack.push(5)
+stack.push(10)
+stack.push(15)
+
+println(stack.pop())
+println(stack.pop())
+println(stack.pop())
+println(stack.pop())

@@ -1,13 +1,133 @@
 
 
+/*
+	Showing off if, else, and else if statements.
+*/
+var a, b = 1, 2
+while (a <= 3):
+	if (a == b):
+		println("A=B")
+	else if (a > b):
+		println("A>B")
+	else:
+		println("A<B")
+	a += 1
 
-
-var b = 11
-if (b == 11):
-	print("YES")
-else if (b == 9):
-	print("NO")
+/*
+	Showing off and and or.
+*/
+println("")
+var g, h = this, 39.0
+if (g == this && h == 39.0):
+	println("and 1 is correct")
 else:
-	print("OTHER")
+	println("and 1 is incorrect")
 
-print(b)
+if (g == this && h != 39):
+	println("and 2 is incorrect")
+else:
+	println("and 2 is correct")
+
+if (g != this && h == 39):
+	println("and 2 is incorrect")
+else:
+	println("and 2 is correct")
+
+if (g != this && h != 39):
+	println("and 2 is incorrect")
+else:
+	println("and 2 is correct")
+
+if (g == this || h == 39.0):
+	println("or 1 is correct")
+else:
+	println("or 1 is incorrect")
+
+if (g == this || h != 39):
+	println("or 2 is correct")
+else:
+	println("or 2 is incorrect")
+
+if (g != this || h == 39):
+	println("or 3 is correct")
+else:
+	println("or 3 is incorrect")
+
+if (g != this || h != 39):
+	println("or 4 is incorrect")
+else:
+	println("or 4 is correct")
+
+/*
+	Showing off short circuiting.
+*/
+var c = "Hello"
+var d = func():(
+	c = "Goodbye"
+	return true
+)
+
+println("")
+if (c == "See ya sucka" && d()):
+	println("This should not happen")
+else:
+	println(c+" should be Hello")
+
+var e = "One"
+var f = func():(
+	e = "Two"
+	return false
+)
+
+println("")
+if (e == "One" || f()):
+	println(e+" should be One")
+else:
+	println("This should not happen")
+
+/**
+	Show off type comparisons
+*/
+var compare = func(x, y): (
+	if (x == y):
+		println(x+" == "+y)
+	else if (x > y):
+		println(x+" > "+y)
+	else:
+		println(x+" < "+y)
+)
+
+println("")
+compare("Hello","Hello")
+compare("Hello","Goodbye")
+compare("Goodbye","Hello")
+
+println("")
+compare(1,1)
+compare(1,-1)
+compare(-1,1)
+
+println("")
+compare(1.0,1.0)
+compare(1.0,-1.0)
+compare(-1.0,1.0)
+
+println("")
+compare(1,1.0)
+compare(1,-1.0)
+compare(-1,1.0)
+
+println("")
+compare(1.0,1)
+compare(1.0,-1)
+compare(-1.0,1)
+
+println("")
+compare(true,true)
+compare(false,false)
+
+println("")
+compare(null, null)
+
+
+

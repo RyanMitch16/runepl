@@ -1,4 +1,8 @@
 
+
+
+
+
 Arrays objects can be created through syntax or through the array function call.
 
 	var a = [1, 2, this, 4, "Hello", 6]
@@ -18,4 +22,3 @@ Arrays have a length member that gives the size of the array.
 
 	print(a.length) //prints 6
 	print(b.length) //prints 10
-

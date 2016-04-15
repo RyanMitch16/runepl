@@ -1,14 +1,26 @@
 
 
+
+/*
+    Show array creation using iterals and the arry function call.
+*/
 var a = [27, 49, 50 , 38, 99, 11, 0, 6]
 
+var a2 = array(10)
+print(a2)
+
+//Show getting an index
 print(a[5])
 
+/**
+    Sort the array.
+*/
 var insertionSort = func(arr): (
     var j = 0
 
     var b = 10
 
+    //Show length member and array index value setting
     while (j < arr.length):
         var i = 0
         while (i < arr.length-1-j):
@@ -22,6 +34,3 @@ var insertionSort = func(arr): (
 
 print(insertionSort(a))
 
-
-var newArray = array(10)
-print(newArray)

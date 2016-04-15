@@ -1,0 +1,224 @@
+
+
+var PriorityQueue = func():(
+
+	var top = null
+	var clock = 0
+
+	/*
+		Create an event with the specified delay and function.
+	*/
+	var __Event = func(delay, f):(
+		var next = null
+		return this
+	)
+
+	/*
+		Insert an entry into the priority queue.
+		@param delay - the time from now to wait to execute the function
+		@param f - the function to execute
+	*/
+	var insert = func(delay, f):(
+		var absTime = clock + delay
+		var newEntry = __Event(absTime, f)
+
+		if (top == null):
+			top = newEntry
+		else if (absTime < top.delay):
+			newEntry.next = top
+			top = newEntry
+		else:
+			var b, n = top, top.next
+			while (n != null && absTime >= n.delay):
+				b = n
+				n = n.next
+			b.next = newEntry
+			newEntry.next = n
+	)
+
+	/*
+		Start executing the events in the event list.
+	*/
+	var go = func():(
+		var events = top
+		while (events != null):
+			var e = events
+			events = events.next
+			clock = e.delay
+			e.f()
+		return "DONE"
+	)
+
+	return this
+)
+
+/*
+	Create a wire to propogate signals.
+*/
+var Wire = func():(
+
+	var signal = 0
+	var endpoints = null
+
+	var __Endpoint = func(f, next): return this
+
+	var getSignal = func(): return signal
+
+	var setSignal = func(v):(
+
+		if (v != signal):
+			signal = v
+			var e = endpoints
+			while (e != null):
+				e.f()
+				e = e.next
+	)
+
+	var addAction = func(f):(
+		endpoints = __Endpoint(f, endpoints)
+
+		f()
+	)
+
+	return this
+
+)
+
+/*
+	Create the circuitry for the inverter gate.
+	@param input1 - the first input wire 
+	@param output - the result of the gate
+*/
+var inverter = func(input, output):(
+
+	var action = func():(
+		pq.insert(4, func():(
+			output.setSignal(invert(input.getSignal()))
+		))
+	)
+
+	var invert = func(x):(
+		if (x == 0):
+			return 1
+		return 0
+	)
+
+	input.addAction(action)
+)
+
+/*
+	Create the circuitry for the and gate.
+	@param input1 - the first input wire 
+	@param input2 - the second input wire 
+	@param output - the result of the gate
+*/
+var andGate = func(input1, input2, output):(
+
+	var action = func():(
+		pq.insert(4, func():(
+			output.setSignal(and(input1.getSignal(), input2.getSignal()))
+		))
+	)
+
+	var and = func(x, y):(
+		if (x == 1 && y == 1):
+			return 1
+		return 0
+	)
+
+	input1.addAction(action)
+	input2.addAction(action)
+)
+
+/*
+	Create the circuitry for the full or gate.
+	@param input1 - the first input wire 
+	@param input2 - the second input wire 
+	@param output - the result of the gate
+*/
+var orGate = func(input1, input2, output):(
+
+	var action = func():(
+		pq.insert(4, func():(
+			output.setSignal(or(input1.getSignal(), input2.getSignal()))
+		))
+	)
+
+	var or = func(x, y):(
+		if (x == 1 || y == 1):
+			return 1
+		return 0
+	)
+
+	input1.addAction(action)
+	input2.addAction(action)
+)
+
+/*
+	Create the circuitry for the probe.
+	@param wire - the wire to report changes for
+	@param name - the name of the wire
+*/
+var probe = func(wire, name):(
+
+	var delay = 1
+	var action = func():(
+		pq.insert(delay, func():(
+			println("at: ", pq.clock ," wire ", name, " has a new value ", wire.getSignal())
+		))
+	)
+	wire.addAction(action)
+)
+
+/*
+	Create the circuitry for the half adder.
+	@param input1 - the first input wire 
+	@param input2 - the second input wire 
+	@param sumOut - the sum out wire
+	@param carryOut - the carry out wire
+*/
+var halfAdder = func(input1, input2, sumOut, carryOut):(
+	var d, e = Wire(), Wire()
+	orGate(input1, input2, d)
+	andGate(input1, input2, carryOut)
+	inverter(carryOut, e)
+	andGate(d, e, sumOut)
+)
+
+/*
+	Create the circuitry for the full adder.
+	@param input1 - the first input wire 
+	@param input2 - the second input wire 
+	@param carryIn - the cary in wire
+	@param sumOut - the sum out wire
+	@param carryOut - the carry out wire
+*/
+var fullAdder = func(input1, input2, carryIn, sumOut, carryOut):(
+	var s, c1, c2 = Wire(), Wire(), Wire()
+	halfAdder(input2, carryIn, s, c1)
+	halfAdder(input1, s, sumOut, c2)
+	orGate(c1, c2, carryOut)
+)
+
+//Create the priority queue and set up the probes to show the output
+var pq = PriorityQueue()
+var input1, input2, carryIn, sumOut, carryOut = Wire(),Wire(),Wire(),Wire(),Wire()
+probe(sumOut, "Sum Bit")
+probe(carryOut, "CarryOut Bit")
+fullAdder(input1,input2, carryIn, sumOut, carryOut)
+
+/*
+	Change the values here to change the input of the full adder.
+	Input1 and input2 are the bits to be added and carryIn is the carry in bit
+	1 indicates a wire is set to high and 0 indicates low
+*/
+input1.setSignal(1)
+input2.setSignal(1)
+carryIn.setSignal(1)
+
+pq.go()
+
+
+
+
+
