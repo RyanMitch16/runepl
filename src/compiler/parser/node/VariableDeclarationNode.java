@@ -16,9 +16,10 @@ import java.util.ListIterator;
 public class VariableDeclarationNode extends Node{
 
     /**
-     * @param type
-     * @param lexeme
-     * @param nodes
+     * Instantiate a node to represent the parsed expression.
+     * @param type the type of expression
+     * @param lexeme the lexeme to report errors with
+     * @param nodes the children of this node
      */
     private VariableDeclarationNode(NodeType type, Lexeme lexeme, Node... nodes) {
         super(type, lexeme, nodes);
@@ -32,6 +33,12 @@ public class VariableDeclarationNode extends Node{
         return new VariableDeclarationNode(NodeType.VariableDeclaration, var, identifiers);
     }
 
+    /**
+     * Evaluate the expression under the environment.
+     * @param env the environment to evaluate the
+     * @return the list of expression returned from the evaluated expression
+     * @throws RunTimeException
+     */
     public ReturnTypeList eval(Environment env) throws RunTimeException{
 
         LinkedList<Lexeme> identifiers = ((IdentifierListNode) children[0]).getIdentifierNames();

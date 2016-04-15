@@ -11,9 +11,10 @@ import compiler.parser.NodeType;
 public class IdentifierNode extends Node {
 
     /**
-     * @param type
-     * @param lexeme
-     * @param nodes
+     * Instantiate a node to represent the parsed expression.
+     * @param type the type of expression
+     * @param lexeme the lexeme to report errors with
+     * @param nodes the children of this node
      */
     private IdentifierNode(NodeType type, Lexeme lexeme, Node... nodes) {
         super(type, lexeme, nodes);
@@ -23,14 +24,31 @@ public class IdentifierNode extends Node {
         return new IdentifierNode(NodeType.Identifier, lexeme);
     }
 
+    /**
+     * Get the lexeme of the identifier.
+     * @return the lexeme that represents the identifier
+     */
     public Lexeme getIdentifierName(){
         return lexeme;
     }
 
+    /**
+     *
+     * @param env
+     * @param type
+     * @param value
+     * @throws RunTimeException
+     */
     public void set(Environment env, NodeType type, ReturnType value) throws RunTimeException{
         env.update(lexeme, type, value);
     }
 
+    /**
+     * Evaluate the expression under the environment.
+     * @param env the environment to evaluate the
+     * @return the list of expression returned from the evaluated expression
+     * @throws RunTimeException
+     */
     public ReturnTypeList eval(Environment env) throws RunTimeException {
         return new ReturnTypeList(env.lookUp(lexeme));
     }

@@ -10,6 +10,12 @@ import compiler.parser.NodeType;
 
 public class ExpressionListNode extends NodeList {
 
+    /**
+     * Instantiate a node to represent the parsed expression.
+     * @param type the type of expression
+     * @param comma the lexeme to report errors with
+     * @param head the children of this node
+     */
     private ExpressionListNode(NodeType type, Lexeme comma, Node head) {
         super(type, comma, head);
     }
@@ -26,6 +32,12 @@ public class ExpressionListNode extends NodeList {
         return new ExpressionListNode(NodeType.ExpressionList, comma, head, next);
     }
 
+    /**
+     * Evaluate the expression under the environment.
+     * @param env the environment to evaluate the
+     * @return the list of expression returned from the evaluated expression
+     * @throws RunTimeException
+     */
     public ReturnTypeList eval(Environment env) throws RunTimeException{
         ReturnTypeList expression = new ReturnTypeList();
 

@@ -12,9 +12,10 @@ import java.util.LinkedList;
 public class ReturnNode extends Node {
 
     /**
-     * @param type
-     * @param lexeme
-     * @param nodes
+     * Instantiate a node to represent the parsed expression.
+     * @param type the type of expression
+     * @param lexeme the lexeme to report errors with
+     * @param nodes the children of this node
      */
     private ReturnNode(NodeType type, Lexeme lexeme, Node... nodes) {
         super(type, lexeme, nodes);
@@ -28,6 +29,12 @@ public class ReturnNode extends Node {
         return new ReturnNode(NodeType.ReturnStatement, ret, expressions);
     }
 
+    /**
+     * Evaluate the expression under the environment.
+     * @param env the environment to evaluate the
+     * @return the list of expression returned from the evaluated expression
+     * @throws RunTimeException
+     */
     public ReturnTypeList eval(Environment env) throws RunTimeException{
         if (children.length == 0) {
             return new ReturnTypeList();

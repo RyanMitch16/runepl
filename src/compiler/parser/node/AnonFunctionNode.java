@@ -13,9 +13,10 @@ import java.util.LinkedList;
 public class AnonFunctionNode extends Node {
 
     /**
-     * @param type
-     * @param lexeme
-     * @param nodes
+     * Instantiate a node to represent the parsed expression.
+     * @param type the type of expression
+     * @param lexeme the lexeme to report errors with
+     * @param nodes the children of this node
      */
     private AnonFunctionNode(NodeType type, Lexeme lexeme, Node... nodes) {
         super(type, lexeme, nodes);
@@ -29,14 +30,29 @@ public class AnonFunctionNode extends Node {
         return new AnonFunctionNode(NodeType.AnonFunction, func, parameters, body);
     }
 
+    /**
+     * Get the body of the function.
+     * @return the node body of the function.
+     */
     public Node getBody(){
         return (children.length == 1)? children[0] : (children[1]);
     }
 
+    /**
+     * Get the parameters of the of the function.
+     * @return  the list of lexemes of the parameters
+     * @throws RunTimeException
+     */
     public LinkedList<Lexeme> getParameters() throws RunTimeException{
         return (children.length == 1)? new LinkedList<>() : ((IdentifierListNode) children[0]).getIdentifierNames();
     }
 
+    /**
+     * Evaluate the expression under the environment.
+     * @param env the environment to evaluate the
+     * @return the list of expression returned from the evaluated expression
+     * @throws RunTimeException
+     */
     public ReturnTypeList eval(Environment env) {
 
         return new ReturnTypeList(new TypeFunction(env, this));

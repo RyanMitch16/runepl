@@ -1,24 +1,120 @@
 
+Main program execution:
+	How to execute the test problem:
+
+		The test probelm is executed through the using the make file:
+			make run-problem
+
+		To change the input values of the full adder, change the values of the signal
+		in at lines 215, 216, and 217.
+
+Rune is similar to python in the sense that statement blocks are grouped using whitespace.
+
+	if (x > 10):
+		print("BLAH")
+
+	var c = func(y):(
+
+		while (x < 100):
+			x += 1
+	)
+
+Literals:
+	Integers : [0-9]+
+	Double : [0-9]+.[0-9]+
+	Strings : "[^(/")]*"
+
+Varaibles:
+	Variables are declared with the var keyword
+		var IDENTIFIER
+	Or
+		var IDENTIFIER = Expression
+
+	Muliple varaibeles acn be declared at once and all variables not initialized to a default
+	value are set to null.
+
+		var IDENTIFIER, IDENTIFIER, ... = Expression, Expression, ....
+
+	Variables cannot be redeclared in the same scope
+
+Assignment:
+	Variables can be reassigned to using the =, +=, -=, /=, and %= operations.
+
+		IDENTIFIER += Expression
+
+	Multiple can also be assigned to as well but the number of expressions and identifiers
+	must be equal.
+
+		IDENTIFIER, IDENTIFIER, ... += Expression, Expression...
+
+Functions:
+	Functions are defined with the func keyword.
+
+		func(PARAMATERS, PARAMATERS, ...):(
+			BODY
+		)
+
+	A function with a single line body can be defined like:
+
+		func(PARAMATERS, PARAMATERS, ...):BODY
+
+	So to set a function to an identifier, one would od:
+
+		var IDENTIFIER = func(PARAMATERS, PARAMATERS, ...):...
+
+	To return a value or multiple values, 
+
+Conditionals:
+	If statements can be represented like: 
+
+		if (Expression):
+			BODY
+		else if (Expression);
+			BODY
+		else:
+			BODY
+
+	Boolean expressions and and or are short circuit evaluated
+
+Iteration:
+	While statements can be used like:
+
+		while(Expression):
+			BODY
+
+Arrays:
+	Arrays objects can be created through syntax or through the array function call.
+
+		var a = [1, 2, this, 4, "Hello", 6]
+
+		var b = array(10) //Initialized to a size of 10 filled with nulls
+
+	Arrays can be accessed using brackets and the first index starts from 0.
+
+		print(a[0]) //prints 1
+		print(a[4]) //prints Hello
+
+		print(b[0]) //prints null because arrays spots are initialized to null
 
 
+	Arrays have a length member that gives the size of the array.
+
+		print(a.length) //prints 6
+		print(b.length) //prints 10
+
+Objects:
+	To return the enviornment, use the this keyword
+
+		var MyObject = func(x):(
+			return this
+		)
+
+	Members of an object can be reassigned to and retrieved with the dot operator
+
+		var m = MyObject(5)
+		println(m.x) //prints 5
+
+		m.x = 10
+		println(m.x) //prints 10
 
 
-Arrays objects can be created through syntax or through the array function call.
-
-	var a = [1, 2, this, 4, "Hello", 6]
-
-	var b = array(10) //Initialized to a size of 10 filled with nulls
-
-
-Arrays can be accessed using brackets and the first index starts from 0.
-
-	print(a[0]) //prints 1
-	print(a[4]) //prints Hello
-
-	print(b[0]) //prints null because arrays spots are initialized to null
-
-
-Arrays have a length member that gives the size of the array.
-
-	print(a.length) //prints 6
-	print(b.length) //prints 10

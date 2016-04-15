@@ -12,6 +12,12 @@ import java.util.LinkedList;
 
 public class IdentifierListNode extends NodeList {
 
+    /**
+     * Instantiate a node to represent the parsed expression.
+     * @param type the type of expression
+     * @param lexeme the lexeme to report errors with
+     * @param head the children of this node
+     */
     private IdentifierListNode(NodeType type, Lexeme lexeme, Node head) {
         super(type, lexeme, head);
     }
@@ -28,6 +34,11 @@ public class IdentifierListNode extends NodeList {
         return new IdentifierListNode(NodeType.IdentifierList, comma, head, next);
     }
 
+    /**
+     * Get the list of identifiers in the list
+     * @return the list of identifier lexemes
+     * @throws RunTimeException
+     */
     public LinkedList<Lexeme> getIdentifierNames() throws RunTimeException{
         NodeList.Iterator identifierIterator = getIterator();
         LinkedList<Lexeme> identifiers = new LinkedList<>();
@@ -39,6 +50,12 @@ public class IdentifierListNode extends NodeList {
         return identifiers;
     }
 
+    /**
+     * Evaluate the expression under the environment.
+     * @param env the environment to evaluate the
+     * @return the list of expression returned from the evaluated expression
+     * @throws RunTimeException
+     */
     public ReturnTypeList eval(Environment env) {
         return null;
     }
