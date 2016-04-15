@@ -2,13 +2,13 @@
 Main program execution:
 	How to execute the test problem:
 
-		The test probelm is executed through the using the make file:
+		The test problem is executed through the using the make file:
 			make run-problem
 
 		To change the input values of the full adder, change the values of the signal
 		in at lines 215, 216, and 217.
 
-Rune is similar to python in the sense that statement blocks are grouped using whitespace.
+Rune is similar to python in the sense that statement blocks are grouped using whitespace. Currently a tab is also equal to 4 spaces and they can be used interchangably. 
 
 	if (x > 10):
 		print("BLAH")
@@ -23,14 +23,15 @@ Literals:
 	Integers : [0-9]+
 	Double : [0-9]+.[0-9]+
 	Strings : "[^(/")]*"
+	Null : null
 
-Varaibles:
+Variables:
 	Variables are declared with the var keyword
 		var IDENTIFIER
 	Or
 		var IDENTIFIER = Expression
 
-	Muliple varaibeles acn be declared at once and all variables not initialized to a default
+	Multiple variables can be declared at once and all variables not initialized to a default
 	value are set to null.
 
 		var IDENTIFIER, IDENTIFIER, ... = Expression, Expression, ....
@@ -81,6 +82,10 @@ Iteration:
 
 		while(Expression):
 			BODY
+Strings:
+	You can concatenate values to strings using the + operatior
+
+		println("Hello my name is "+ name+" and I am "+age+" years old")
 
 Arrays:
 	Arrays objects can be created through syntax or through the array function call.
@@ -103,7 +108,7 @@ Arrays:
 		print(b.length) //prints 10
 
 Objects:
-	To return the enviornment, use the this keyword
+	To return the environment, use the this keyword
 
 		var MyObject = func(x):(
 			return this
@@ -117,4 +122,8 @@ Objects:
 		m.x = 10
 		println(m.x) //prints 10
 
+Print:
+	Print a string representation of an object using print or println functions.
 
+		println("blah", 1, [8,3, 4])  //Prints them all in the same line then goes to the next
+		print(1, "something"), 9.0)

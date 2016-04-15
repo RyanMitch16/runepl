@@ -47,7 +47,6 @@ public class Expression4 {
             }
 
         }
-
         return head;
 
     }

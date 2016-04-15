@@ -7,10 +7,11 @@
 var a = [27, 49, 50 , 38, 99, 11, 0, 6]
 
 var a2 = array(10)
-print(a2)
+println(a2)
 
 //Show getting an index
-print(a[5])
+println("value at index 5 = ",a)
+println(a[5])
 
 /**
     Sort the array.
@@ -32,5 +33,5 @@ var insertionSort = func(arr): (
     return a
 )
 
-print(insertionSort(a))
+println(insertionSort(a))
 

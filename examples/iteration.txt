@@ -13,6 +13,9 @@ while (a < 50):
     b += 1
 
 
+println("")
+println("")
+
 /**
 	Demonstrate breaking out of a while loop.
 */

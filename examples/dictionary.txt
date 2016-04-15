@@ -168,7 +168,10 @@ var Dictionary = func():(
 		return x
 	)
 
-	var toString = func(): __toString(root, 0)
+	var toString = func(): (
+		__toString(root, 0)
+		println("")
+	)
 
 	var __toString = func(node, h):(
 
@@ -189,6 +192,7 @@ var Dictionary = func():(
 		if (node.right != null):
 			print("RIGHT : ")
 			__toString(node.right, h+1)
+
 	)
 
 	return this
@@ -196,24 +200,25 @@ var Dictionary = func():(
 
 var d = Dictionary()
 d.insert(2, "Mitchell")
-d.toString()
+//d.toString()
 d.insert(1, "Bernabe")
-d.toString()
+//d.toString()
 d.insert(3, "Stilson")
-d.toString()
+//d.toString()
 d.insert(4, "McDonald")
-d.toString()
+//d.toString()
 d.insert(5, "Wallace")
-d.toString()
+//d.toString()
 d.insert(6, "Lyons")
-d.toString()
+//d.toString()
 d.insert(7, "Cook")
-d.toString()
+//d.toString()
 d.insert(8, "Pizza")
-d.toString()
+//d.toString()
 //d.toString()
 
-//println(d.search(6))
-
+println(d.search(6))
 
 return 1
+
+

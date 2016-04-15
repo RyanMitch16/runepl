@@ -8,7 +8,7 @@ import compiler.parser.Node;
 
 /**
  * Expression : AnonFunctionDeclaration
- *            | Expression7
+ *            | Expression9
  */
 public class Expression {
 

@@ -33,10 +33,10 @@ public class IdentifierNode extends Node {
     }
 
     /**
-     *
-     * @param env
-     * @param type
-     * @param value
+     * Set the value of the identifier in the enviornemnt
+     * @param env the enviornment the identifier is in
+     * @param type the type of assignment operation
+     * @param value the value to set the variable to
      * @throws RunTimeException
      */
     public void set(Environment env, NodeType type, ReturnType value) throws RunTimeException{

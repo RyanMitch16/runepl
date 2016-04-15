@@ -14,13 +14,21 @@ import java.io.IOException;
 public class Parser {
 
     private Lexer lexer;
-
     private Lexeme currentLexeme;
 
+    /**
+     * Create the parser with the specified lexer.
+     * @param lexer the lexer the input was read from
+     */
     public Parser(Lexer lexer) {
         this.lexer = lexer;
     }
 
+    /**
+     * Lex and parse the file
+     * @return the node parsed from the tree
+     * @throws BuildException
+     */
     public Node parse() throws BuildException{
 
         currentLexeme = lexer.lex();
@@ -33,8 +41,8 @@ public class Parser {
     }
 
     /**
-     *
-     * @return
+     * Advance the lexeme in the lexeme stream
+     * @return the current lexeme
      */
     public Lexeme advance() throws BuildException {
         Lexeme old = currentLexeme;
@@ -43,19 +51,15 @@ public class Parser {
     }
 
     /**
-     *
-     * @param type
-     * @return
+     * Check what the current lexeme is.
+     * @param type the type of lexeme
+     * @return  the current lexeme
      */
     public boolean check(LexemeType type){
         return type == currentLexeme.type;
     }
 
-    /**
-     *
-     * @param types
-     * @return
-     */
+
     public boolean check(LexemeType... types){
         for (LexemeType type : types) {
             if (type == currentLexeme.type)
@@ -82,18 +86,14 @@ public class Parser {
     public static void main(String[] args){
 
         try {
-            Lexer lexer = new Lexer(new File("test2.txt"));
+            Lexer lexer = new Lexer(new File(args[0]));
             Parser parser = new Parser(lexer);
 
-            //System.out.println(parser.parse()); //Print out the tree
-            parser.parse();
+            System.out.println(parser.parse());
 
         } catch (Exception e) {
-            //System.out.println(e);
-            System.out.println("illegal");
-            return;
+            System.out.println(e);
         }
-        System.out.println("legal");
 
     }
 

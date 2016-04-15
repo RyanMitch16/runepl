@@ -12,7 +12,6 @@ import java.util.TreeMap;
 
 public class Lexer {
 
-
     /**
      * The tree map of all the possible symbols used in the language.
      */
