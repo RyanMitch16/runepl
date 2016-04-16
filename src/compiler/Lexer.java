@@ -490,13 +490,15 @@ public class Lexer {
                     int decimalPos = lexemeBuilder.length();
                     lexemeBuilder.append('.');
                     lexemeBuilder.append(c);
+                    c = readChar();
                     while (!reachedEOF() && (isNumber(c) || isLetter(c))) {
                         lexemeBuilder.append(c);
                         c = readChar();
                     }
                     //Return the decimal number if the decimal place characters are all integers
-                    if (isInteger(lexemeBuilder.substring(decimalPos+1,lexemeBuilder.length())))
+                    if (isInteger(lexemeBuilder.substring(decimalPos+1,lexemeBuilder.length()))) {
                         return new Lexeme(LexemeType.LITERAL_DECIMAL, lexemeBuilder.toString(), bl, bp);
+                    }
                 }
                 else {
                     //Since the dot was read earlier, set a flag to return the dot next iteration and return the integer

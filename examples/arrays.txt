@@ -34,4 +34,3 @@ var insertionSort = func(arr): (
 )
 
 println(insertionSort(a))
-
