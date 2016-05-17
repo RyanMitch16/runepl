@@ -233,7 +233,7 @@ public class Lexer {
         while (!reachedEOF()) {
             String token = lexemeBuilder.toString() + c;
             Map.Entry<String, LexemeType> entry = symbolMap.ceilingEntry(token);
-            if (entry.getKey().startsWith(token)) {
+            if (entry != null && entry.getKey().startsWith(token)) {
                 lexemeBuilder.append(c);
                 c = readChar();
             } else {

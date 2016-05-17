@@ -1,5 +1,9 @@
 
 Main program execution:
+
+	Execute any rune file by using the provided shell script:
+		rune.sh [file]
+
 	How to execute the test problem:
 
 		The test problem is executed through the using the make file:
